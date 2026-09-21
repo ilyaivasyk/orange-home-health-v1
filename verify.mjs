@@ -28,6 +28,7 @@ for (const file of pageFiles) {
   assert.match(html, /src="(?:\.\.\/)?site.js(?:\?v=1)?"/, `${file}: shared interaction script missing`);
   assert.match(html, /(?:site\.css|homepage\.css)\?v=1/, `${file}: versioned local styles are required`);
   assert.match(html, /site\.js\?v=1/, `${file}: versioned shared script is required`);
+  assert.match(html, /FAX 818-584-8822/, `${file}: utility fax number missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
   for (const [, id] of html.matchAll(/<(?:input|textarea)\b[^>]*\bid="([^"]+)"/g)) assert.ok(html.includes(`for="${id}"`), `${file}: missing field label ${id}`);
   if (['contact/index.html', 'careers/index.html'].includes(file)) {
@@ -42,6 +43,7 @@ assert.match(html, /<dialog\b[^>]*aria-labelledby="intro-title"/, 'Introduction 
 assert.equal((html.match(/class="hero-image\b/g) || []).length, 3, 'Hero preview needs three frames');
 assert.ok(!html.includes('play-circle'), 'Remove the circular play control');
 assert.match(html, /Final video will appear here/, 'Hero must identify the future video');
+assert.match(html, /HOME HEALTH CARE IN SOUTHERN CALIFORNIA/, 'Homepage service area label must name Southern California');
 const siteJs = readFileSync(resolve(root, 'site.js'), 'utf8');
 const siteCss = readFileSync(resolve(root, 'site.css'), 'utf8');
 const homepageCss = readFileSync(resolve(root, 'homepage.css'), 'utf8');
