@@ -1,5 +1,8 @@
-/* Shared navigation and the seven internal page layouts. */
-.desktop-nav { gap: 28px; }
+/* Shared navigation and interior page layouts. */
+.header-inner { gap: 18px; }
+.desktop-nav { gap: 15px; white-space: nowrap; }
+.desktop-nav > a,.nav-dropdown > summary { font-size: .8125rem; }
+.header-cta { padding-inline: 18px; white-space: nowrap; }
 .desktop-nav a[aria-current=page],.nav-dropdown.is-active > summary { color: var(--oh-orange); }
 .nav-dropdown { position: relative; }
 .nav-dropdown > summary { display: flex; gap: 9px; align-items: center; min-height: 44px; list-style: none; font-size: .875rem; font-weight: 600; color: var(--oh-navy); }
@@ -145,7 +148,7 @@
 .contact-questions .text-link { font-size: .875rem; }
 @media (min-width: 1600px) { .inner-hero,.plain-hero { max-width: 1560px; margin-inline: auto; } }
 @media (max-width: 1199px) {
-  .desktop-nav { gap: 22px; }.inner-hero-grid { gap: 40px; }.inner-hero-grid > figure { margin-right: -52px; }
+  .desktop-nav { gap: 10px; }.desktop-nav > a,.nav-dropdown > summary { font-size: .75rem; }.header-cta { padding-inline: 12px; }.inner-hero-grid { gap: 40px; }.inner-hero-grid > figure { margin-right: -52px; }
   .detail-layout { grid-template-columns: 220px minmax(0,1fr); gap: 48px; }.plain-hero-grid,.mission-grid,.care-start > div,.form-layout { gap: 48px; }
   .resources-layout { grid-template-columns: 220px 1fr; gap: 48px; }.values-grid { gap: 30px; }
 }

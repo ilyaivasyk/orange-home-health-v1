@@ -2,7 +2,7 @@
 
 ## What is ready
 
-`index.html` opens the eight-page working website. `homepage.html` remains the home-layout source and matching alias. `homepage.css` contains the home layouts; `site.css` adds interior layouts and shared navigation; `tokens.css` and `components.css` provide the shared foundation. All photography and the vector web mark are local in `assets/`. `SITE-MAP.md` maps every primary original page to its redesign.
+`index.html` opens the 13-page working website. `homepage.html` remains the home-layout source and matching alias. `homepage.css` contains the home layouts; `site.css` adds interior layouts and shared navigation; `tokens.css` and `components.css` provide the shared foundation. All photography and the vector web mark are local in `assets/`. `SITE-MAP.md` maps the original content to the redesign and its added service-detail pages.
 
 `figma-foundations.svg` can be imported into Figma as vector artwork. It contains palette swatches, text examples, spacing and a button example. Text remains text; install Manrope before matching the browser typography. Georgia is the editorial italic accent. This SVG is a style board, not a complete editable website.
 
@@ -107,4 +107,4 @@ The hero is illustrative imagery from the draft. Nothing represents verified Ora
 
 ## Delivery boundary
 
-The eight-page HTML/CSS design works locally with no framework, build or service account. The Figma groundwork is provided, but no native Figma document has been created. A designer can recreate components with the above Auto Layout mapping and imported vectors. Final copy, privacy/policy links, imagery, video and any patient intake or recruitment workflow need business approval before deployment. Every website page is deliberately `noindex`; this is not a published replacement for the existing website.
+The 13-page HTML/CSS design works locally with no framework, build or service account. The Figma groundwork is provided, but no native Figma document has been created. A designer can recreate components with the above Auto Layout mapping and imported vectors. Final copy, privacy/policy links, imagery, video and any patient intake or recruitment workflow need business approval before deployment. Every website page is deliberately `noindex`; this is not a published replacement for the existing website.

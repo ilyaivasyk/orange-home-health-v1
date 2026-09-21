@@ -7,7 +7,7 @@
 - Added a transparent-background PNG based on the supplied logo and used it in the header and footer. Browser inspection confirmed the transparent logo at its intended 88px desktop size; the original raster and draft SVGs remain available for the designer.
 - Versioned the local CSS/JavaScript references to prevent stale browser previews while keeping them relative and offline-safe. `index.html` is the single starting point; no server, framework, package install or build step is required for review.
 - Added bilingual `START-HERE.txt` and `DEVELOPER-HANDOFF.md` files explaining the design system, integration-ready front-end files, Figma-oriented handoff, and production boundaries.
-- Rebuilt all eight pages and the matching home alias. Automated integrity, JavaScript syntax and archive-content checks passed before packaging.
+- Rebuilt all 13 pages and the matching home alias. Automated integrity, JavaScript syntax and archive-content checks passed before packaging.
 
 ## Complete website review / 21 September 2026
 
@@ -15,12 +15,12 @@
 - Form refinement: required fields use red `*` markers (#B42318) and one explanatory legend; optional suffixes are removed. Contact name/email/phone are required; Careers also requires name, email, primary phone and position. Browser inspection confirmed the red computed color, missing-phone validation blocking the result, and a valid fictitious phone enabling the explicit local-only result. No real data was sent.
 - Footer refinement: merged the care/company link groups into one “Explore Orange” navigation column on all pages, preserving all ten destinations. Desktop retains separate brand and contact columns; mobile stacks them. Visually checked desktop and measured mobile at 375px: no overflow, all ten navigation links share one left edge. The integrity check now enforces one footer navigation with ten links per page.
 - Compact/wider refinement: increased the website container maximum from 1200px to 1320px; reduced footer padding and desktop link rows from 38px to 30px, with 36px rows on mobile. At the inspected 1280px desktop viewport, the updated footer measured 468px tall. Tablet puts brand/contact beside the spanning navigation column. Updated stylesheet URLs prevent the preview from retaining stale spacing; source integrity checks pass.
-- Reviewed the original site's eight primary business pages and preserved that page structure. Source-to-page mapping and exclusions are in `SITE-MAP.md`.
-- All eight page designs were measured at 375, 768 and 1440 CSS pixels through the guide's real iframe viewport. Every document's scroll width matched its viewport width. This is a horizontal-overflow check, not full accessibility certification.
+- Reviewed the original site's business pages and documented the new requested destinations. Source-to-page mapping and exclusions are in `SITE-MAP.md`.
+- The shared responsive system was checked at desktop and mobile widths. The new service-detail page matched its 390px viewport without horizontal overflow. This is a layout check, not full accessibility certification.
 - Visually inspected the nursing desktop and 375px mobile hero, plus the revised homepage care steps and language section. The three care steps now use centered, equal-width columns and balanced connectors; languages use a non-interactive greeting panel.
-- Verified local navigation from Home to Skilled Nursing, the desktop service menu's open/Escape-close states, and all eight destinations in the mobile menu with Escape dismissal.
+- Verified local navigation, the desktop service menu and all 13 destinations in the mobile menu.
 - Contact's empty submission exposed two invalid required fields. Valid example name/email produced the explicit “nothing has been sent or stored” result. Careers' valid example required fields produced the same local-only result. No submission was transmitted to Orange.
-- `verify.mjs` covers all eight pages plus the matching homepage alias: asset and page links, fragment targets, field labels, one h1, unique IDs, image alternatives, shared script, noindex, no stale links to the old site, token agreement and handoff files.
+- `verify.mjs` covers all 13 pages plus the matching homepage alias: asset and page links, fragment targets, field labels, required service forms, one h1, unique IDs, image alternatives, shared script, noindex, no stale links to the old site, token agreement and handoff files.
 - Final `node build.mjs`, `node build-site.mjs` and `node verify.mjs` passed. Syntax checks passed for `build-site.mjs`, `site.js`, `homepage.js` and `guide.js`.
 
 The new pages are complete static designs, not a CMS deployment. Live enquiry/recruitment delivery, privacy/legal copy, server errors, real assistive-technology testing and approved operational details remain production work. Foundation and homepage-v2 checks below are historical; the v3 entry describes the latest scope.

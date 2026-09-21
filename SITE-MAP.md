@@ -1,6 +1,6 @@
 # Orange Home Health / complete website design
 
-Eight primary pages, matching the business navigation of the original website. Reviewed 21 September 2026. No live website was modified.
+Thirteen connected pages. The original business content was reviewed on 22 September 2026. No live WordPress website was modified.
 
 | Original page / content source | New local page | Design treatment |
 | --- | --- | --- |
@@ -9,16 +9,22 @@ Eight primary pages, matching the business navigation of the original website. R
 | https://orangehomehealthinc.com/services/ | `services/index.html` | Full six-service catalog, individual planning, area/payment questions |
 | https://orangehomehealthinc.com/skilled-nursing/ | `skilled-nursing/index.html` | Service hero, sibling navigation, nursing scope, questions, related service |
 | https://orangehomehealthinc.com/home-health-aide/ | `home-health-aide/index.html` | Service hero, everyday support, planning questions, related service |
+| Service listed at https://orangehomehealthinc.com/services/ | `physical-therapy/index.html` | Focused overview and contact form; no unsupported clinical program claims |
+| Service listed at https://orangehomehealthinc.com/services/ | `occupational-therapy/index.html` | Focused overview and contact form; no unsupported clinical program claims |
+| Service listed at https://orangehomehealthinc.com/services/ | `speech-therapy/index.html` | Focused overview and contact form; no unsupported clinical program claims |
+| Service listed at https://orangehomehealthinc.com/services/ | `medical-social-work/index.html` | Focused overview and contact form; no unsupported clinical program claims |
 | https://orangehomehealthinc.com/resources/ | `resources/index.html` | Five original external resources, practical conversation prompts |
 | https://orangehomehealthinc.com/careers/ | `careers/index.html` | Careers hero and application layout with local-only validation |
+| No dedicated page on the original site | `insurance-accepted/index.html` | Coverage-check page and form; no invented insurer list |
 | https://orangehomehealthinc.com/contact/ | `contact/index.html` | Phone, fax, email, office/directions and enquiry form layout |
 
 `homepage.html` is retained as a matching home alias so earlier preview links continue to work. The foundation guide moved from `index.html` to `design-system.html`; the site now opens on the real homepage at its root. Other handoff documents remain separate from patient-facing pages.
 
 ## Content decisions
 
-- Preserve all eight primary business destinations. The old WordPress sidebar’s 2017 Latin demo posts, archives, login and feed links are theme boilerplate, not business-page content; they are not reproduced.
-- Physical therapy, occupational therapy, speech therapy and medical social work are sections in the service catalog, as on the original. The source only provided dedicated service-detail pages for nursing and home health aide. Do not invent specific clinical programs or new claims to fill unsupported detail pages.
+- Preserve the original business destinations and add the requested Insurance Accepted destination. The old WordPress sidebar’s 2017 Latin demo posts, archives, login and feed links are theme boilerplate, not business-page content; they are not reproduced.
+- Physical therapy, occupational therapy, speech therapy and medical social work are listed in the original service catalog. The requested individual pages use only cautious overview copy and a contact form because the source does not provide detailed clinical programs for them.
+- The original site does not publish an accepted-insurer list. The Insurance Accepted page therefore asks visitors to confirm their current plan with Orange instead of presenting unsupported payer names.
 - The nursing list groups the original clinical categories into readable rows. It is service information, not medical instructions. Suitability and availability must be discussed with the team.
 - The older aide page advertises 24/7 availability. That operational promise was not independently confirmed, so the new copy asks visitors to confirm scheduling instead.
 - About retains individualized care, diverse language support, equipment coordination and the family-centered purpose. Unverified superlatives, guarantees, staff identities and credentials are not added.
@@ -33,9 +39,9 @@ The original resource list is retained: American Nurses Association, Caregiving.
 ## Editing / rebuilding
 
 - Edit `homepage.html` for the home layout. `build-site.mjs` synchronizes its shared header/footer, local navigation and `index.html` alias.
-- Edit `build-site.mjs` for interior page content and shared navigation/footer. Run `node build-site.mjs` to rebuild its seven static pages. This overwrites generated interior HTML, so keep later content changes in the generator.
+- Edit `build-site.mjs` for interior page content and shared navigation/footer. Run `node build-site.mjs` to rebuild its 12 static pages. This overwrites generated interior HTML, so keep later content changes in the generator.
 - Shared styles: `tokens.css`, `components.css`, `homepage.css`, `site.css`. Shared interactions: `site.js`. Home-only motion: `homepage.js`.
-- Run `node verify.mjs` to check all nine HTML entries (eight pages plus home alias), internal assets/links/anchors, headings, field labels and token consistency.
+- Run `node verify.mjs` to check all 14 HTML entries (13 pages plus home alias), internal assets/links/anchors, headings, field labels and token consistency.
 - All generated HTML can be opened directly. For matching original clean URLs, serve this folder with any static server; `/skilled-nursing/` resolves to its `index.html`.
 
 ## Figma extension

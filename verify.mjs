@@ -3,7 +3,9 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 const root = dirname(fileURLToPath(import.meta.url));
-const pageFiles = ['index.html', 'homepage.html', ...['about', 'services', 'skilled-nursing', 'home-health-aide', 'resources', 'careers', 'contact'].map(slug => `${slug}/index.html`)];
+const serviceSlugs = ['skilled-nursing', 'home-health-aide', 'physical-therapy', 'occupational-therapy', 'speech-therapy', 'medical-social-work'];
+const servicePageFiles = serviceSlugs.map(slug => `${slug}/index.html`);
+const pageFiles = ['index.html', 'homepage.html', ...['about', 'services', ...serviceSlugs, 'resources', 'careers', 'insurance-accepted', 'contact'].map(slug => `${slug}/index.html`)];
 const getIds = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 for (const file of pageFiles) {
   const pagePath = resolve(root, file);
@@ -14,7 +16,10 @@ for (const file of pageFiles) {
   const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0];
   assert.ok(footer, `${file}: missing shared footer`);
   assert.equal((footer.match(/<nav\b/g) || []).length, 1, `${file}: footer must have one navigation column`);
-  assert.equal((footer.match(/<nav\b[\s\S]*?<\/nav>/)[0].match(/<a\b/g) || []).length, 10, `${file}: retain all ten footer destinations`);
+  assert.equal((footer.match(/<nav\b[\s\S]*?<\/nav>/)[0].match(/<a\b/g) || []).length, 13, `${file}: retain all thirteen footer destinations`);
+  const header = html.match(/<header class="site-header">[\s\S]*?<\/header>/)?.[0];
+  assert.ok(header, `${file}: missing shared header`);
+  for (const label of ['Home', 'About us', 'Services', 'Careers', 'Resources', 'Insurance accepted', 'Contact us']) assert.ok(header.includes(label), `${file}: header missing ${label}`);
   for (const [, ref] of html.matchAll(/(?:src|href|poster)="([^"]+)"/g)) {
     if (/^(https?:|tel:|mailto:)/.test(ref)) continue;
     const [urlPath, fragment] = ref.split('#');
@@ -32,11 +37,12 @@ for (const file of pageFiles) {
   assert.match(html, /13735 Victory Blvd, Suite 18, Van Nuys, CA 91401/, `${file}: utility address missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
   for (const [, id] of html.matchAll(/<(?:input|textarea)\b[^>]*\bid="([^"]+)"/g)) assert.ok(html.includes(`for="${id}"`), `${file}: missing field label ${id}`);
-  if (['contact/index.html', 'careers/index.html'].includes(file)) {
+  if (['contact/index.html', 'careers/index.html', 'insurance-accepted/index.html', ...servicePageFiles].includes(file)) {
     for (const type of ['email', 'tel']) assert.match(html, new RegExp(`<input[^>]*type="${type}"[^>]* required`), `${file}: email and primary phone must be required`);
     assert.match(html, /Fields marked[\s\S]*?are required\. All others are optional\./, `${file}: required-field legend missing`);
     assert.ok(!/<label[^>]*>[^<]*\((?:optional|required)\)/.test(html), `${file}: use compact required markers`);
   }
+  if (servicePageFiles.includes(file)) assert.match(html, /<form class="site-form" data-preview-form/, `${file}: service enquiry form missing`);
 }
 const html = readFileSync(resolve(root, 'homepage.html'), 'utf8');
 assert.equal(html, readFileSync(resolve(root, 'index.html'), 'utf8'), 'Home alias must match the website entry point');
@@ -58,4 +64,4 @@ for (const key of ['Brand/Orange', 'Brand/Blue', 'Ink/Navy', 'Ink/Body', 'Ink/Mu
 assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSeconds);
 for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
 for (const file of pageFiles) assert.match(readFileSync(resolve(root, file), 'utf8'), /assets\/logo-transparent\.png/, `${file}: transparent PNG logo missing`);
-console.log('PASS: offline-ready 8-page website + home alias; local links, assets, forms, animations, tokens and developer handoff files.');
+console.log('PASS: offline-ready 13-page website + home alias; local links, assets, forms, animations, tokens and developer handoff files.');

@@ -4,7 +4,7 @@ ENGLISH
 Unzip this folder and open index.html in a modern browser.
 No server, installation, build step, framework, or account is needed.
 
-This package contains the complete eight-page responsive layout, a documented
+This package contains the complete 13-page responsive layout, a documented
 design system (colors, typography, spacing, component sizes and responsive
 rules), local assets, Figma-oriented handoff files, and HTML/CSS/JavaScript a
 developer can integrate into the existing website or CMS.
