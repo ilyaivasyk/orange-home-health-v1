@@ -77,8 +77,12 @@ h2 em { font-family: var(--oh-font-accent); font-weight: 400; }
 .section-heading h2 { margin: 0; }
 .heading-aside { max-width: 365px; padding-bottom: 2px; }
 .heading-aside p { font-size: 1rem; margin-bottom: 12px; color: var(--oh-muted); }
-.services-video { margin: 0 0 52px; overflow: hidden; border-radius: 10px; background: var(--oh-navy); box-shadow: 0 18px 50px rgb(24 53 74 / .1); }
+.services-video { position: relative; margin: 0 0 52px; overflow: hidden; border-radius: 10px; background: var(--oh-navy); box-shadow: 0 18px 50px rgb(24 53 74 / .1); }
 .services-video video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--oh-navy); }
+.services-video-play { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: inline-flex; align-items: center; gap: 12px; min-height: 58px; padding: 12px 24px; border: 0; border-radius: 6px; background: var(--oh-orange); color: white; font: inherit; font-size: .9375rem; font-weight: 700; box-shadow: 0 12px 36px rgb(24 53 74 / .3); }
+.services-video-play:hover { background: var(--oh-orange-hover); }
+.services-video-play span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgb(255 255 255 / .18); font-size: .75rem; }
+.services-video-play[hidden] { display: none; }
 .services-video figcaption { padding: 12px 16px; background: white; color: var(--oh-muted); font-size: .75rem; }
 .featured-services { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .photo-service { color: var(--oh-navy); text-decoration: none; }

@@ -9,8 +9,8 @@ let home = readFileSync(join(root, 'homepage.html'), 'utf8');
 const icons = home.match(/<svg class="icon-library"[\s\S]*?<\/svg>/)[0];
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const versionAssets = html => html
-  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=2"')
-  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=2"');
+  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=3"')
+  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=3"');
 const serviceRoutes = [
   ['skilled-nursing', 'Skilled nursing'],
   ['home-health-aide', 'Home health aide'],
@@ -80,7 +80,7 @@ const pages = [
   {
     slug: 'services', title: 'Our Services', description: 'Skilled nursing, home health aide, therapy and social work services from Orange Home Health.',
     body: plainHero('CARE, BUILT AROUND YOU', 'The support you need.<br>The home you <em>love.</em>', 'Explore care at home, from nursing and personal support to therapy and medical social work. Start with your needs. We’ll talk about the next step.') +
-    `<section class="inner-section service-catalog"><div class="site-container">${featured()}<div id="therapy" class="catalog-grid">${[
+    `<section class="inner-section service-catalog"><div class="site-container"><figure class="services-video" data-services-video><video controls playsinline preload="metadata" poster="../assets/services-video-poster.png" aria-label="Orange Home Health introduction"><source src="../assets/services-introduction.mp4" type="video/mp4">Your browser does not support this video.</video><button class="services-video-play" type="button" data-services-video-play><span aria-hidden="true">▶</span>Watch video</button><figcaption>Meet Orange Home Health.</figcaption></figure>${featured()}<div id="therapy" class="catalog-grid">${[
       ['physical-therapy', 'move', 'Physical therapy', 'Discuss physical therapy needs, assessment and available services with our team.'],
       ['occupational-therapy', 'care', 'Occupational therapy', 'Ask about occupational therapy as part of an individualized home health care plan.'],
       ['speech-therapy', 'chat', 'Speech therapy', 'Talk with us about speech therapy services and the next steps for assessment.'],

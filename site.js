@@ -39,3 +39,11 @@ document.querySelectorAll('[data-preview-form]').forEach(form => {
   form.addEventListener('input', () => { result.hidden = true; });
   form.querySelector('[data-form-submit]').disabled = false;
 });
+
+document.querySelectorAll('[data-services-video]').forEach(panel => {
+  const video = panel.querySelector('video');
+  const playButton = panel.querySelector('[data-services-video-play]');
+  playButton.addEventListener('click', () => video.play());
+  video.addEventListener('play', () => { playButton.hidden = true; });
+  video.addEventListener('ended', () => { playButton.hidden = false; });
+});
