@@ -1,0 +1,26 @@
+{
+  "name": "Orange Home Health / Website Version 1",
+  "format": "Plain reference tokens; map to Figma variables and styles",
+  "color": {
+    "Brand/Orange": "#B94716", "Brand/Orange Hover": "#A03A10", "Brand/Orange Pressed": "#842F0E", "Brand/Orange Light": "#FF9C4A", "Brand/Blue": "#83CBE6", "Brand/Editorial Accent": "#F4C39E",
+    "Ink/Navy": "#18354A", "Ink/Body": "#263E4D", "Ink/Muted": "#536673", "Ink/Link": "#17648B",
+    "Surface/White": "#FFFFFF", "Surface/Warm": "#FBF7F2", "Surface/Blue": "#EAF6FB", "Surface/Orange": "#FFF0E6", "Surface/Canvas": "#F8FAFA", "Surface/Hero Dark": "#0A1D24",
+    "Border/Default": "#D7E0E5", "Border/Control": "#738694", "State/Focus": "#155CBE"
+  },
+  "typography": {
+    "Hero/Desktop": { "family": "Manrope", "weight": 500, "size": 82, "lineHeight": 85.28, "letterSpacing": -4.51 },
+    "Hero/Tablet": { "family": "Manrope", "weight": 500, "size": 66, "lineHeight": 68.64, "letterSpacing": -3.63 },
+    "Hero/Mobile": { "family": "Manrope", "weight": 500, "size": 54, "lineHeight": 56.7, "letterSpacing": -2.97 },
+    "Heading/Desktop": { "family": "Manrope", "weight": 500, "size": 50.4, "lineHeight": 57.96, "letterSpacing": -2.268 },
+    "Heading/Mobile": { "family": "Manrope", "weight": 500, "size": 35, "lineHeight": 40.95, "letterSpacing": -1.575 },
+    "Body": { "family": "Manrope", "weight": 400, "size": 18, "lineHeight": 29.7 },
+    "Body/Small": { "family": "Manrope", "weight": 400, "size": 16, "lineHeight": 27.2 },
+    "Action": { "family": "Manrope", "weight": 700, "size": 15, "lineHeight": 21.18 },
+    "Eyebrow": { "family": "Manrope", "weight": 700, "size": 12, "lineHeight": 18, "letterSpacing": 1.44 },
+    "Accent": { "family": "Georgia", "weight": 400, "style": "italic", "size": "inherit from heading" }
+  },
+  "spacing": [4, 8, 12, 16, 20, 24, 28, 32, 40, 48, 56, 60, 64, 76, 80, 90, 104, 120],
+  "radius": { "Button": 6, "Photo": 8, "Hero": 10, "Modal": 12 },
+  "layout": { "Desktop": 1440, "Tablet": 768, "Mobile": 390, "ContentMaximum": 1320, "DesktopSectionPadding": 104, "TabletSectionPadding": 76, "MobileSectionPadding": 60 },
+  "motion": { "HeroScaleFrom": 1, "HeroScaleTo": 1.045, "HeroOneWaySeconds": 8, "HeroSceneSeconds": 2.5, "HeroCrossfadeSeconds": 0.55, "IntroSceneSeconds": 3, "IntroTotalSeconds": 9, "ReducedMotion": "static poster + manual intro scenes" }
+}

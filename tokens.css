@@ -1,0 +1,37 @@
+:root {
+  --oh-orange: #B94716; --oh-orange-hover: #A03A10; --oh-orange-active: #842F0E;
+  --oh-orange-bright: #FF9C4A; --oh-orange-soft: #FFF0E6;
+  --oh-blue: #83CBE6; --oh-blue-soft: #EAF6FB; --oh-blue-mid: #C7E7F3;
+  --oh-blue-ink: #17648B; --oh-blue-hover: #124F70;
+  --oh-navy: #18354A; --oh-navy-hover: #102A3D; --oh-navy-active: #0A1D2B;
+  --oh-white: #FFFFFF; --oh-canvas: #F8FAFA; --oh-warm: #FBF7F2;
+  --oh-text: #263E4D; --oh-muted: #536673; --oh-line: #D7E0E5; --oh-control: #738694;
+  --oh-disabled-bg: #E4E9ED; --oh-disabled-text: #536673;
+  --oh-success: #24724D; --oh-success-bg: #EAF5EE;
+  --oh-warning: #83520B; --oh-warning-bg: #FFF4D6;
+  --oh-error: #B42318; --oh-error-bg: #FFF0EE; --oh-focus: #155CBE;
+  --oh-font: Manrope, Arial, sans-serif; --oh-font-accent: Georgia, serif;
+  --oh-space-4: .25rem; --oh-space-8: .5rem; --oh-space-12: .75rem;
+  --oh-space-16: 1rem; --oh-space-24: 1.5rem; --oh-space-32: 2rem;
+  --oh-space-48: 3rem; --oh-space-64: 4rem; --oh-space-80: 5rem; --oh-space-120: 7.5rem;
+  --oh-wide: 75rem; --oh-reading: 45rem; --oh-form: 40rem;
+  --oh-gutter: 1.25rem; --oh-section: 3rem;
+  --oh-radius-control: .5rem; --oh-radius-card: .75rem; --oh-radius-media: 1rem; --oh-radius-badge: .25rem;
+  --oh-shadow-card: 0 2px 8px rgb(24 53 74 / .05);
+  --oh-shadow-menu: 0 8px 24px rgb(24 53 74 / .12);
+  --oh-shadow-header: 0 2px 8px rgb(24 53 74 / .08);
+  --oh-shadow-modal: 0 24px 64px rgb(24 53 74 / .20);
+  --oh-duration-fast: 120ms; --oh-duration-normal: 180ms; --oh-ease: cubic-bezier(.2,0,0,1);
+  --oh-display: 2.5rem; --oh-display-line: 1.2;
+  --oh-h1: 2.25rem; --oh-h1-line: 1.2223;
+  --oh-h2: 1.875rem; --oh-h2-line: 1.2667;
+  --oh-h3: 1.5rem; --oh-h3-line: 1.3334;
+  --oh-h4: 1.3125rem; --oh-h4-line: 1.381;
+}
+@media (min-width: 48rem) {
+  :root { --oh-gutter: 2rem; --oh-section: 4rem; --oh-display: 3rem; --oh-display-line: 1.1667; --oh-h1: 3rem; --oh-h1-line: 1.1667; --oh-h2: 2.25rem; --oh-h2-line: 1.2223; --oh-h3: 1.75rem; --oh-h3-line: 1.2858; --oh-h4: 1.375rem; --oh-h4-line: 1.3637; }
+}
+@media (min-width: 75rem) {
+  :root { --oh-gutter: 3rem; --oh-section: 5rem; --oh-display: 4rem; --oh-display-line: 1.125; --oh-h1: 3.5rem; --oh-h1-line: 1.1429; --oh-h2: 2.5rem; --oh-h2-line: 1.2; }
+}
+@media (max-width: 22rem) { :root { --oh-gutter: 1rem; } }

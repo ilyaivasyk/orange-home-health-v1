@@ -1,0 +1,29 @@
+ORANGE HOME HEALTH WEBSITE DESIGN — VERSION 1
+
+ENGLISH
+Unzip this folder and open index.html in a modern browser.
+No server, installation, build step, framework, or account is needed.
+
+This package contains the complete eight-page responsive layout, a documented
+design system (colors, typography, spacing, component sizes and responsive
+rules), local assets, Figma-oriented handoff files, and HTML/CSS/JavaScript a
+developer can integrate into the existing website or CMS.
+
+This is a design prototype, not a production deployment. Forms are local-only
+previews and the homepage motion marks the future introductory video area.
+
+Full English and Ukrainian notes: DEVELOPER-HANDOFF.md
+
+УКРАЇНСЬКОЮ
+Розпакуйте папку та відкрийте index.html у сучасному браузері.
+Сервер, встановлення, збірка, фреймворк або обліковий запис не потрібні.
+
+Пакет містить повну адаптивну верстку восьми сторінок, задокументовану
+дизайн-систему (кольори, типографіка, відступи, розміри компонентів і правила
+адаптивності), локальні матеріали, файли для майбутнього перенесення у Figma та
+HTML/CSS/JavaScript, які розробник може інтегрувати у наявний сайт або CMS.
+
+Це дизайн-прототип, а не production-публікація. Форми працюють лише як локальне
+прев’ю, а рух на головній сторінці позначає місце майбутнього вступного відео.
+
+Повний опис англійською та українською: DEVELOPER-HANDOFF.md

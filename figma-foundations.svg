@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1080" viewBox="0 0 1440 1080">
+<title>Orange Home Health — editable vector foundations for Figma</title>
+<rect width="1440" height="1080" fill="#FBF7F2"/>
+<g id="Header" fill="#18354A" font-family="Manrope,Arial,sans-serif"><text x="64" y="70" font-size="14" letter-spacing="2">ORANGE HOME HEALTH / DESIGN FOUNDATIONS</text><text x="64" y="151" font-size="58" font-weight="500" letter-spacing="-2">A familiar place. A considered design.</text><text x="64" y="198" font-size="18" fill="#536673">Website Version 1 · Vector style board · Values map to the working HTML/CSS design</text></g>
+<g id="Color-Palette" font-family="Manrope,Arial,sans-serif" font-size="16" fill="#18354A">
+<g id="Brand-Orange"><rect x="64" y="254" width="200" height="112" rx="8" fill="#B94716"/><text x="64" y="396">Action orange</text><text x="64" y="423" fill="#536673">#B94716</text></g>
+<g id="Brand-Blue"><rect x="286" y="254" width="200" height="112" rx="8" fill="#83CBE6"/><text x="286" y="396">Light blue</text><text x="286" y="423" fill="#536673">#83CBE6</text></g>
+<g id="Ink-Navy"><rect x="508" y="254" width="200" height="112" rx="8" fill="#18354A"/><text x="508" y="396">Navy</text><text x="508" y="423" fill="#536673">#18354A</text></g>
+<g id="Surface-Blue"><rect x="730" y="254" width="200" height="112" rx="8" fill="#EAF6FB" stroke="#D7E0E5"/><text x="730" y="396">Calm blue</text><text x="730" y="423" fill="#536673">#EAF6FB</text></g>
+<g id="Surface-White"><rect x="952" y="254" width="200" height="112" rx="8" fill="#FFFFFF" stroke="#D7E0E5"/><text x="952" y="396">White</text><text x="952" y="423" fill="#536673">#FFFFFF</text></g>
+<g id="Editorial-Accent"><rect x="1174" y="254" width="200" height="112" rx="8" fill="#F4C39E"/><text x="1174" y="396">Editorial accent</text><text x="1174" y="423" fill="#536673">#F4C39E</text></g>
+</g>
+<path d="M64 467H1376" stroke="#D7E0E5"/>
+<g id="Typography" fill="#18354A"><text x="64" y="514" font-family="Manrope,Arial,sans-serif" font-size="13" letter-spacing="2">TYPE / MANROPE + GEORGIA ITALIC</text><text x="64" y="614" font-family="Manrope,Arial,sans-serif" font-size="82" font-weight="500" letter-spacing="-4.5">Care feels different</text><text x="64" y="706" font-family="Georgia,serif" font-size="82" font-style="italic" letter-spacing="-4.5">at home.</text><text x="64" y="765" font-family="Manrope,Arial,sans-serif" font-size="18" fill="#536673">Body / 18px · 29.7px line height · calm, direct and human.</text></g>
+<g id="Action-Primary" transform="translate(994 556)"><rect width="280" height="56" rx="6" fill="#B94716"/><text x="24" y="34" font-family="Manrope,Arial,sans-serif" font-weight="700" font-size="15" fill="white">Find care for your family</text><path d="M242 28h16m-6-6 6 6-6 6" fill="none" stroke="white" stroke-width="1.6"/></g>
+<g id="Component-Notes" fill="#536673" font-family="Manrope,Arial,sans-serif" font-size="16"><text x="994" y="656">Primary button / 56px · 6px radius</text><text x="994" y="690">Photo / 8px radius</text><text x="994" y="724">Hero / 10px radius</text><text x="994" y="758">Focus / #155CBE · 3px outline</text></g>
+<path d="M64 812H1376" stroke="#D7E0E5"/>
+<g id="Spacing-Layout" font-family="Manrope,Arial,sans-serif" fill="#18354A"><text x="64" y="859" font-size="13" letter-spacing="2">LAYOUT / RESPONSIVE, CONTENT-LED</text><text x="64" y="907" font-size="24">1440 desktop · 768 tablet · 390 mobile</text><text x="64" y="947" font-size="18" fill="#536673">1200px content maximum · 104 / 76 / 60px section padding · 20px mobile gutter</text><text x="64" y="1011" font-size="14" fill="#536673">Import this SVG for editable vectors. Install Manrope for matching text. See FIGMA-HANDOFF.md for components and responsive rules.</text></g>
+</svg>

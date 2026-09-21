@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254" role="img" aria-labelledby="title desc">
+  <title id="title">Orange Home Health Inc logo</title>
+  <desc id="desc">An orange house surrounds a heart with a blue caregiver and orange child. The words Orange Home Health Inc and Caring for You at Home appear below.</desc>
+
+  <defs>
+    <linearGradient id="orange" x1="0" y1="0" x2="0.78" y2="1">
+      <stop offset="0" stop-color="#ffb343"/>
+      <stop offset="0.32" stop-color="#ff8a00"/>
+      <stop offset="0.75" stop-color="#ed6500"/>
+      <stop offset="1" stop-color="#ba3e00"/>
+    </linearGradient>
+    <linearGradient id="orangeSoft" x1="0" y1="0" x2="0.75" y2="1">
+      <stop offset="0" stop-color="#ffbd4d"/>
+      <stop offset="0.55" stop-color="#ff8200"/>
+      <stop offset="1" stop-color="#dc5200"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#6bc9f1"/>
+      <stop offset="0.4" stop-color="#239bd7"/>
+      <stop offset="1" stop-color="#0069a7"/>
+    </linearGradient>
+    <linearGradient id="blueDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#44b9eb"/>
+      <stop offset="0.55" stop-color="#0788c7"/>
+      <stop offset="1" stop-color="#005d98"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#3b2417" flood-opacity="0.34"/>
+    </filter>
+    <filter id="smallShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#152c42" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+
+  <!-- House -->
+  <g id="house" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)">
+    <path d="M286 383 L628 90 L824 255 L824 184 L870 184 L870 296 L982 383" stroke="url(#orange)" stroke-width="49"/>
+    <path d="M350 369 L350 629 M906 369 L906 629" stroke="url(#orange)" stroke-width="49"/>
+    <path d="M286 377 L628 84 L824 249" stroke="#ffc463" stroke-opacity="0.58" stroke-width="7"/>
+    <path d="M870 290 L982 377" stroke="#ffc463" stroke-opacity="0.5" stroke-width="7"/>
+    <path d="M359 374 L359 620 M915 374 L915 620" stroke="#ffc463" stroke-opacity="0.46" stroke-width="6"/>
+  </g>
+
+  <!-- Heart -->
+  <g id="heart" filter="url(#shadow)">
+    <path d="M628 650 C582 620 438 532 424 414 C414 329 465 292 523 298 C575 304 610 334 628 377 C647 334 683 304 735 300 C794 295 843 334 833 418 C819 536 676 621 628 650 Z"
+          fill="none" stroke="url(#orange)" stroke-width="34" stroke-linejoin="round"/>
+    <path d="M628 636 C579 606 457 524 443 416 C434 349 471 318 521 319 C570 320 606 352 628 397 C650 352 686 321 734 320 C785 319 822 350 814 418"
+          fill="none" stroke="#ffb447" stroke-opacity="0.6" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Caregiver and child -->
+  <g id="family" stroke-linejoin="round" filter="url(#smallShadow)">
+    <circle cx="580" cy="414" r="46" fill="url(#blue)" stroke="#00639d" stroke-width="5"/>
+    <path d="M519 457 C493 477 494 523 512 553 C538 596 583 615 624 609 C646 606 661 592 654 578 C649 568 639 566 625 569 C597 572 570 559 555 535 L539 507 L545 546 C548 562 524 570 516 551 C500 514 493 478 519 457 Z"
+          fill="url(#blue)" stroke="#00639d" stroke-width="5"/>
+    <circle cx="687" cy="498" r="36" fill="url(#orangeSoft)" stroke="#d95400" stroke-width="5"/>
+    <path d="M661 545 C680 543 704 538 716 526 C726 517 741 520 744 532 C749 552 726 574 703 586 C686 596 666 600 645 600 C632 599 626 590 631 579 C637 568 648 556 661 545 Z"
+          fill="url(#orangeSoft)" stroke="#d95400" stroke-width="5"/>
+    <circle cx="566" cy="398" r="17" fill="#a9e4fb" opacity="0.33"/>
+    <circle cx="676" cy="486" r="12" fill="#ffd26f" opacity="0.34"/>
+  </g>
+
+  <!-- Open-book / caring hands -->
+  <g id="book" fill="none" stroke-linecap="round" filter="url(#smallShadow)">
+    <path d="M308 690 C401 632 520 638 606 674 C502 655 400 658 308 690 Z" fill="url(#blue)" stroke="#0876b2" stroke-width="5"/>
+    <path d="M662 674 C754 637 869 642 976 699 C867 664 767 657 662 674 Z" fill="url(#blue)" stroke="#0876b2" stroke-width="5"/>
+    <path d="M324 678 C418 642 514 648 591 670 M680 670 C765 646 857 650 959 686" stroke="#82d8f7" stroke-width="5" opacity="0.7"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g id="wordmark" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" filter="url(#shadow)">
+    <text x="627" y="912" font-size="224" letter-spacing="-5" fill="url(#orange)" stroke="#c74900" stroke-width="3">Orange</text>
+    <text x="627" y="1049" font-size="87" letter-spacing="3" fill="url(#blueDark)" stroke="#005f99" stroke-width="2">HOME HEALTH INC</text>
+  </g>
+
+  <!-- Tagline -->
+  <g id="tagline" filter="url(#smallShadow)">
+    <path d="M151 1126 H255 M999 1126 H1103" stroke="#f47a00" stroke-width="10" stroke-linecap="round"/>
+    <text x="627" y="1147" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="url(#blueDark)" stroke="#005f99" stroke-width="1.5">Caring for You at Home</text>
+  </g>
+</svg>
