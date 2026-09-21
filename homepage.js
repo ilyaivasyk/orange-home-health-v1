@@ -1,5 +1,5 @@
-// Put approved media URLs here. Empty values retain the honest motion concept.
-const HERO_VIDEO = '';
+// Approved client media. An empty value retains the still-image fallback.
+const HERO_VIDEO = 'assets/hero-introduction.mp4';
 const INTRO_VIDEO = '';
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const hero = document.querySelector('.cinema-hero');

@@ -36,7 +36,7 @@ Orange / Homepage
     Copy / Eyebrow + Heading + Description
     Actions / Primary + Phone
     Intro trigger / Rest | Hover | Focus
-    Video placeholder label / Final video will appear here
+    Approved background video + still-image fallback
     Text motion control / Pause preview | Resume preview
   Care promises / Three items
   Services / Featured photo card × 2
@@ -86,9 +86,9 @@ Do not represent static language greetings as controls. Forms are design preview
 
 ## Introduction / motion direction
 
-The hero cycles three photos every 2.5 seconds with a 550ms crossfade and a subtle 4.5% zoom over eight seconds. The corner label states that the final video will appear here; a small text-only pause/resume control replaces the circular play button. The separate introduction is a nine-second **HTML motion concept**, not an encoded video: three illustrative stills at three seconds each, with pause, replay and manual scene controls. The modal supports Escape, native focus containment and return focus. Reduced-motion preference keeps the hero static and starts the intro in manual mode. Off-tab motion pauses automatically and resumes on return unless the visitor explicitly paused it.
+The hero uses the supplied MP4 as a muted background loop with a still-image fallback and a small text-only pause/resume control. The separate introduction remains a nine-second **HTML motion concept**: three illustrative stills at three seconds each, with pause, replay and manual scene controls. The modal supports Escape, native focus containment and return focus. Reduced-motion preference pauses the hero and starts the intro in manual mode. Off-tab motion pauses automatically and resumes on return unless the visitor explicitly paused it.
 
-In `homepage.js`, set `HERO_VIDEO` to a short, approved, silent MP4 background loop and `INTRO_VIDEO` to the final introduction. These are deliberately empty now: no broken video requests and no external video tracker. Poster remains visible on hero playback failure. Full introduction plays only after the visitor clicks its trigger; native controls are shown.
+`homepage.js` points `HERO_VIDEO` to the supplied local background MP4. The second supplied MP4 appears in Our Services with native controls and a local poster. Still images remain visible if hero playback fails. The modal introduction can later use `INTRO_VIDEO` if the client supplies a separate approved version.
 
 Production brief: film real, consented people in a home setting; use a warm caregiver/patient interaction, one detail of thoughtful support, then the brand/contact closing shot. Keep the background loop free of essential text or dialogue. For a narrated introduction, provide an approved script, captions and transcript before publishing. No soundtrack or narration was created for this prototype.
 

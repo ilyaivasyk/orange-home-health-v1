@@ -6,7 +6,7 @@ The homepage includes a cinematic hero, photographic services, editorial about s
 
 The Version 1 interaction layer adds lightweight, dependency-free motion inspired by modern component patterns: service and editorial imagery reveal as it enters the viewport, service navigation opens smoothly, and FAQ answers expand with a gentle transition. Reduced-motion preferences are respected.
 
-The hero automatically crossfades between three illustrative photos every 2.5 seconds, with a small “Final video will appear here” label and a text-only pause/resume control. There is no circular play button. “Preview our introduction” opens a nine-second HTML motion concept with three stills, pause/replay, and manual scene selection. **These are video placeholders, not encoded or filmed videos.** To use approved final MP4 files, set `HERO_VIDEO` and `INTRO_VIDEO` at the top of `homepage.js`. The native video players and poster/error fallbacks are provided. Add captions and a transcript if the approved introduction includes speech.
+The hero now uses the supplied 13-second introduction as an autoplaying, muted background video with a text-only pause/resume control and still-image fallback. The Our Services section includes the second supplied video with native controls and sound. “Preview our introduction” still opens the nine-second HTML motion concept. Add approved captions and a transcript if either video includes speech required for the final site.
 
 For future Figma work, use `FIGMA-HANDOFF.md`, `figma-tokens.json`, and the importable vector board `figma-foundations.svg`. These provide transferable foundations and a component map; no native Figma file was created.
 

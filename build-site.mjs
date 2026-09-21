@@ -9,8 +9,8 @@ let home = readFileSync(join(root, 'homepage.html'), 'utf8');
 const icons = home.match(/<svg class="icon-library"[\s\S]*?<\/svg>/)[0];
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const versionAssets = html => html
-  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=1"')
-  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=1"');
+  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=2"')
+  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=2"');
 const serviceRoutes = [
   ['skilled-nursing', 'Skilled nursing'],
   ['home-health-aide', 'Home health aide'],

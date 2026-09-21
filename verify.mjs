@@ -30,9 +30,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js(?:\?v=1)?"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=1/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=1/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=2"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=2/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=2/, `${file}: versioned shared script is required`);
   assert.match(html, /FAX 818-584-8822/, `${file}: utility fax number missing`);
   assert.match(html, /13735 Victory Blvd, Suite 18, Van Nuys, CA 91401/, `${file}: utility address missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
@@ -47,9 +47,9 @@ for (const file of pageFiles) {
 const html = readFileSync(resolve(root, 'homepage.html'), 'utf8');
 assert.equal(html, readFileSync(resolve(root, 'index.html'), 'utf8'), 'Home alias must match the website entry point');
 assert.match(html, /<dialog\b[^>]*aria-labelledby="intro-title"/, 'Introduction must have a named native dialog');
-assert.equal((html.match(/class="hero-image\b/g) || []).length, 3, 'Hero preview needs three frames');
 assert.ok(!html.includes('play-circle'), 'Remove the circular play control');
-assert.match(html, /Final video will appear here/, 'Hero must identify the future video');
+assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const HERO_VIDEO = 'assets\/hero-introduction\.mp4'/, 'Hero video must be configured');
+assert.match(html, /<source src="assets\/services-introduction\.mp4" type="video\/mp4">/, 'Services video missing');
 assert.match(html, /HOME HEALTH CARE IN SOUTHERN CALIFORNIA/, 'Homepage service area label must name Southern California');
 const siteJs = readFileSync(resolve(root, 'site.js'), 'utf8');
 const siteCss = readFileSync(resolve(root, 'site.css'), 'utf8');
@@ -62,6 +62,6 @@ const tokens = JSON.parse(readFileSync(resolve(root, 'figma-tokens.json'), 'utf8
 const css = readFileSync(resolve(root, 'tokens.css'), 'utf8');
 for (const key of ['Brand/Orange', 'Brand/Blue', 'Ink/Navy', 'Ink/Body', 'Ink/Muted', 'State/Focus']) assert.ok(css.includes(tokens.color[key]), `${key} differs from the foundation`);
 assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSeconds);
-for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
+for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt', 'assets/hero-introduction.mp4', 'assets/services-introduction.mp4', 'assets/services-video-poster.png']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
 for (const file of pageFiles) assert.match(readFileSync(resolve(root, file), 'utf8'), /assets\/logo-transparent\.png/, `${file}: transparent PNG logo missing`);
 console.log('PASS: offline-ready 13-page website + home alias; local links, assets, forms, animations, tokens and developer handoff files.');

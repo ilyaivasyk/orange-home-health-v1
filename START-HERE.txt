@@ -10,7 +10,7 @@ rules), local assets, Figma-oriented handoff files, and HTML/CSS/JavaScript a
 developer can integrate into the existing website or CMS.
 
 This is a design prototype, not a production deployment. Forms are local-only
-previews and the homepage motion marks the future introductory video area.
+previews. The two supplied MP4 files appear in the hero and Our Services.
 
 Full English and Ukrainian notes: DEVELOPER-HANDOFF.md
 
@@ -18,12 +18,12 @@ Full English and Ukrainian notes: DEVELOPER-HANDOFF.md
 Розпакуйте папку та відкрийте index.html у сучасному браузері.
 Сервер, встановлення, збірка, фреймворк або обліковий запис не потрібні.
 
-Пакет містить повну адаптивну верстку восьми сторінок, задокументовану
+Пакет містить повну адаптивну верстку 13 сторінок, задокументовану
 дизайн-систему (кольори, типографіка, відступи, розміри компонентів і правила
 адаптивності), локальні матеріали, файли для майбутнього перенесення у Figma та
 HTML/CSS/JavaScript, які розробник може інтегрувати у наявний сайт або CMS.
 
 Це дизайн-прототип, а не production-публікація. Форми працюють лише як локальне
-прев’ю, а рух на головній сторінці позначає місце майбутнього вступного відео.
+прев’ю. Два надані MP4 вставлені в hero та секцію Our Services.
 
 Повний опис англійською та українською: DEVELOPER-HANDOFF.md

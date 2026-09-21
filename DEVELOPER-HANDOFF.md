@@ -33,7 +33,7 @@ No local server, package installation, build command, framework, or account is r
 
 ### Current scope
 
-This is Version 1 of the design handoff, not a deployed production website. The contact and careers forms validate locally but do not send or store data. The homepage photo sequence shows where the final introductory video will be integrated. The final CMS/backend connection, form delivery, approved video, legal/privacy content, production imagery, and final brand approval remain implementation tasks.
+This is Version 1 of the design handoff, not a deployed production website. The forms validate locally but do not send or store data. The homepage includes the two supplied local MP4 files: one in the hero and one in Our Services. The final CMS/backend connection, form delivery, approved captions/transcript, legal/privacy content, production imagery, and final brand approval remain implementation tasks.
 
 The recipient did not specify a preferred design or development format. This first delivery therefore uses portable HTML/CSS/JavaScript plus a documented design system. It can be reviewed immediately and then integrated into the target platform.
 
@@ -72,6 +72,6 @@ The recipient did not specify a preferred design or development format. This fir
 
 ### Поточні межі
 
-Це Version 1 дизайн-передачі, а не опублікований production-сайт. Форми Contact і Careers перевіряють поля локально, але не надсилають і не зберігають дані. Послідовність фото на головній сторінці показує місце для майбутнього вступного відео. Підключення CMS/backend, надсилання форм, затверджене відео, юридичний і privacy-контент, production-зображення та фінальне затвердження бренду залишаються завданнями реалізації.
+Це Version 1 дизайн-передачі, а не опублікований production-сайт. Форми перевіряють поля локально, але не надсилають і не зберігають дані. Головна сторінка містить два надані локальні MP4: одне відео в hero, друге — в Our Services. Підключення CMS/backend, надсилання форм, затверджені субтитри/транскрипт, юридичний і privacy-контент, production-зображення та фінальне затвердження бренду залишаються завданнями реалізації.
 
 Одержувач не вказав бажаний формат дизайну чи розробки. Тому перша передача підготовлена у переносному форматі HTML/CSS/JavaScript із задокументованою дизайн-системою. Її можна одразу переглянути, а потім інтегрувати у потрібну платформу.
