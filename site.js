@@ -43,7 +43,14 @@ document.querySelectorAll('[data-preview-form]').forEach(form => {
 document.querySelectorAll('[data-services-video]').forEach(panel => {
   const video = panel.querySelector('video');
   const playButton = panel.querySelector('[data-services-video-play]');
-  playButton.addEventListener('click', () => video.play());
-  video.addEventListener('play', () => { playButton.hidden = true; panel.classList.add('is-playing'); });
-  video.addEventListener('ended', () => { playButton.hidden = false; panel.classList.remove('is-playing'); });
+  if (reduceMotion.matches) video.pause();
+  playButton.addEventListener('click', () => {
+    video.currentTime = 0; video.loop = false; video.muted = false; video.controls = true;
+    playButton.hidden = true; panel.classList.add('is-playing'); video.play();
+  });
+  video.addEventListener('ended', () => {
+    video.controls = false; video.muted = true; video.loop = true; video.currentTime = 0;
+    playButton.hidden = false; panel.classList.remove('is-playing');
+    if (!reduceMotion.matches) video.play();
+  });
 });

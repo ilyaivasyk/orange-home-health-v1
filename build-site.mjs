@@ -9,8 +9,8 @@ let home = readFileSync(join(root, 'homepage.html'), 'utf8');
 const icons = home.match(/<svg class="icon-library"[\s\S]*?<\/svg>/)[0];
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const versionAssets = html => html
-  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=4"')
-  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=4"');
+  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=5"')
+  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=5"');
 const serviceRoutes = [
   ['skilled-nursing', 'Skilled nursing'],
   ['home-health-aide', 'Home health aide'],
@@ -79,7 +79,7 @@ const pages = [
   supportServicePage({slug: 'medical-social-work', title: 'Medical Social Work', label: 'MEDICAL SOCIAL WORK', heading: 'Questions become clearer.<br><em>Support feels closer.</em>', intro: 'Explore medical social work support for the care questions and resources your family is navigating.', image: 'home-health-aide.jpg', alt: 'A caregiver and older adult walking together at home', points: ['Questions about the care situation', 'Family and caregiver support needs', 'Resources you are trying to understand', 'Next steps within an individual care plan']}),
   {
     slug: 'services', title: 'Our Services', description: 'Skilled nursing, home health aide, therapy and social work services from Orange Home Health.',
-    body: `<section class="services-page-hero" data-services-video aria-labelledby="services-title"><video controls playsinline preload="metadata" poster="../assets/services-video-poster.png" aria-label="Orange Home Health introduction"><source src="../assets/services-introduction.mp4" type="video/mp4">Your browser does not support this video.</video><div class="services-page-shade" aria-hidden="true"></div><div class="site-container services-page-hero-inner"><div class="services-page-copy"><p class="eyebrow">CARE, BUILT AROUND YOU</p><h1 id="services-title">The support you need.<br>The home you <em>love.</em></h1><p>Explore care at home, from nursing and personal support to therapy and medical social work. Start with your needs. We’ll talk about the next step.</p><button class="services-video-play" type="button" data-services-video-play><span aria-hidden="true">▶</span>Watch video</button></div></div></section>` +
+    body: `<section class="services-page-hero" data-services-video aria-labelledby="services-title"><video autoplay muted loop playsinline preload="metadata" poster="../assets/services-video-poster.png" aria-label="Orange Home Health introduction"><source src="../assets/services-introduction.mp4" type="video/mp4">Your browser does not support this video.</video><div class="services-page-shade" aria-hidden="true"></div><div class="site-container services-page-hero-inner"><div class="services-page-copy"><p class="eyebrow">CARE, BUILT AROUND YOU</p><h1 id="services-title">The support you need.<br>The home you <em>love.</em></h1><p>Explore care at home, from nursing and personal support to therapy and medical social work. Start with your needs. We’ll talk about the next step.</p><button class="services-video-play" type="button" data-services-video-play><span aria-hidden="true">▶</span>Watch video</button></div></div></section>` +
     `<section class="inner-section service-catalog"><div class="site-container">${featured()}<div id="therapy" class="catalog-grid">${[
       ['physical-therapy', 'move', 'Physical therapy', 'Discuss physical therapy needs, assessment and available services with our team.'],
       ['occupational-therapy', 'care', 'Occupational therapy', 'Ask about occupational therapy as part of an individualized home health care plan.'],
