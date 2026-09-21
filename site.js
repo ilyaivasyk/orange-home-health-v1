@@ -44,6 +44,6 @@ document.querySelectorAll('[data-services-video]').forEach(panel => {
   const video = panel.querySelector('video');
   const playButton = panel.querySelector('[data-services-video-play]');
   playButton.addEventListener('click', () => video.play());
-  video.addEventListener('play', () => { playButton.hidden = true; });
-  video.addEventListener('ended', () => { playButton.hidden = false; });
+  video.addEventListener('play', () => { playButton.hidden = true; panel.classList.add('is-playing'); });
+  video.addEventListener('ended', () => { playButton.hidden = false; panel.classList.remove('is-playing'); });
 });
