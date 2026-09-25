@@ -9,8 +9,8 @@ let home = readFileSync(join(root, 'homepage.html'), 'utf8');
 const icons = home.match(/<svg class="icon-library"[\s\S]*?<\/svg>/)[0];
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const versionAssets = html => html
-  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=5"')
-  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=5"');
+  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=6"')
+  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=6"');
 const serviceRoutes = [
   ['skilled-nursing', 'Skilled nursing'],
   ['home-health-aide', 'Home health aide'],
@@ -20,7 +20,7 @@ const serviceRoutes = [
   ['medical-social-work', 'Medical social work']
 ];
 const serviceSlugs = serviceRoutes.map(([slug]) => slug);
-const routes = ['about', 'services', ...serviceSlugs, 'resources', 'careers', 'insurance-accepted', 'contact'];
+const routes = ['about', 'services', ...serviceSlugs, 'resources', 'careers', 'coverage-area', 'insurance-accepted', 'contact'];
 const route = (slug, prefix = '../') => `${prefix}${slug === 'home' ? 'index.html' : `${slug}/index.html`}`;
 const link = (slug, label, active, prefix) => `<a href="${route(slug, prefix)}"${active === slug ? ' aria-current="page"' : ''}>${label}</a>`;
 function header(active, prefix = '../') {
@@ -30,15 +30,15 @@ function header(active, prefix = '../') {
   <nav class="desktop-nav" aria-label="Main navigation">
     ${link('home', 'Home', active, prefix)}${link('about', 'About us', active, prefix)}
     <details class="nav-dropdown${['services', ...serviceSlugs].includes(active) ? ' is-active' : ''}"><summary>Services</summary><div><a class="nav-overview" href="${route('services', prefix)}"${active === 'services' ? ' aria-current="page"' : ''}>All services →</a>${serviceRoutes.map(([slug, label]) => link(slug, label, active, prefix)).join('')}</div></details>
-    ${link('careers', 'Careers', active, prefix)}${link('resources', 'Resources', active, prefix)}${link('insurance-accepted', 'Insurance accepted', active, prefix)}
+    ${link('careers', 'Careers', active, prefix)}${link('resources', 'Resources', active, prefix)}${link('coverage-area', 'Coverage area', active, prefix)}${link('insurance-accepted', 'Insurance accepted', active, prefix)}
   </nav>
   <a class="oh-btn header-cta" href="${route('contact', prefix)}"${active === 'contact' ? ' aria-current="page"' : ''}>Contact us ${icon('arrow')}</a>
-  <details class="mobile-menu"><summary><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></summary><nav aria-label="Mobile navigation">${link('home', 'Home', active, prefix)}${link('about', 'About us', active, prefix)}${link('services', 'All services', active, prefix)}${serviceRoutes.map(([slug, label]) => link(slug, label, active, prefix)).join('')}${link('careers', 'Careers', active, prefix)}${link('resources', 'Resources', active, prefix)}${link('insurance-accepted', 'Insurance accepted', active, prefix)}${link('contact', 'Contact us', active, prefix)}</nav></details>
+  <details class="mobile-menu"><summary><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></summary><nav aria-label="Mobile navigation">${link('home', 'Home', active, prefix)}${link('about', 'About us', active, prefix)}${link('services', 'All services', active, prefix)}${serviceRoutes.map(([slug, label]) => link(slug, label, active, prefix)).join('')}${link('careers', 'Careers', active, prefix)}${link('resources', 'Resources', active, prefix)}${link('coverage-area', 'Coverage area', active, prefix)}${link('insurance-accepted', 'Insurance accepted', active, prefix)}${link('contact', 'Contact us', active, prefix)}</nav></details>
 </div></header>`;
 }
 function footer(prefix = '../') {
   return `<footer class="site-footer"><div class="site-container"><div class="footer-grid"><div class="footer-brand-column"><a class="brand" href="${route('home', prefix)}"><img class="brand-logo" src="${prefix}assets/logo-transparent.png" width="1254" height="1254" alt="Orange Home Health Inc."></a><p>Caring for you at home.</p><a class="footer-location" href="https://www.google.com/maps/search/?api=1&amp;query=13735+Victory+Blvd+Suite+18+Van+Nuys+CA+91401">${icon('pin')}<span>13735 Victory Blvd, Suite 18<br>Van Nuys, CA 91401</span></a></div>
-<nav aria-label="Footer navigation"><h3>Explore Orange</h3><a href="${route('home', prefix)}">Home</a><a href="${route('about', prefix)}">About us</a><a href="${route('services', prefix)}">All services</a>${serviceRoutes.map(([slug, label]) => `<a href="${route(slug, prefix)}">${label}</a>`).join('')}<a href="${route('resources', prefix)}">Resources</a><a href="${route('careers', prefix)}">Careers</a><a href="${route('insurance-accepted', prefix)}">Insurance accepted</a><a href="${route('contact', prefix)}">Contact us</a></nav>
+<nav aria-label="Footer navigation"><h3>Explore Orange</h3><a href="${route('home', prefix)}">Home</a><a href="${route('about', prefix)}">About us</a><a href="${route('services', prefix)}">All services</a>${serviceRoutes.map(([slug, label]) => `<a href="${route(slug, prefix)}">${label}</a>`).join('')}<a href="${route('resources', prefix)}">Resources</a><a href="${route('careers', prefix)}">Careers</a><a href="${route('coverage-area', prefix)}">Coverage area</a><a href="${route('insurance-accepted', prefix)}">Insurance accepted</a><a href="${route('contact', prefix)}">Contact us</a></nav>
 <div class="footer-contact"><h3>Let’s connect</h3><a href="tel:+18185325353">818-532-5353</a><a href="mailto:contact@orangehc.com">contact@orangehc.com</a><p>Fax: 818-584-8822</p><small>For general enquiries, please leave out private medical details.</small></div></div><div class="footer-bottom"><span>© 2026 Orange Home Health Inc.</span><span>Design preview · Illustrative imagery <a href="${prefix}design-system.html" target="_top">Design system ↗</a></span></div></div></footer>`;
 }
 const cta = (title = 'A little conversation.<br>A meaningful <em>beginning.</em>') => `<section class="contact-section"><div class="site-container contact-inner"><div><p class="eyebrow">FOR YOU. FOR SOMEONE YOU LOVE.</p><h2>${title}</h2><p>Let’s talk about care at home and the next step for your family.</p><div class="contact-actions"><a class="oh-btn" href="tel:+18185325353">${icon('phone')}Call 818-532-5353</a><a class="contact-link" href="../contact/index.html">Contact our team ${icon('arrow')}</a></div></div><div class="contact-emblem" aria-hidden="true"><svg viewBox="0 0 180 170"><path d="m18 81 72-61 72 61M35 74v75h110V74"/><path d="M90 130s-44-28-44-52c0-26 32-30 44-7 12-23 44-19 44 7 0 24-44 52-44 52Z"/></svg></div></div></section>`;
@@ -62,6 +62,14 @@ const supportServicePage = ({slug, title, label, heading, intro, image, alt, poi
   body: photoHero({label, title: heading, description: intro, image, alt, variant: slug, action: 'Ask about this service', href: '#contact-form'}) +
   `<section class="inner-section"><div class="site-container detail-layout">${sidebar(slug)}<div class="detail-content"><p class="eyebrow">INDIVIDUAL SUPPORT AT HOME</p><h2>Start with your needs.<br>Build the plan <em>together.</em></h2><p>${intro}</p><h2 class="detail-heading">A conversation may include</h2>${checklist(points)}<div class="soft-callout"><h3>Assessment comes first.</h3><p>Contact Orange to discuss whether this service is appropriate and available for your individual situation.</p></div></div></div></section>` + enquiryForm(slug, title) + cta()
 });
+const coverageAreas = [
+  ['Los Angeles County', ['Los Angeles', 'Van Nuys', 'Burbank', 'Glendale', 'Pasadena', 'Santa Clarita', 'Lancaster', 'Palmdale', 'Torrance', 'Long Beach', 'Downey', 'Whittier', 'Inglewood', 'Pomona', 'West Covina']],
+  ['Orange County', ['Anaheim', 'Santa Ana', 'Irvine', 'Orange', 'Fullerton', 'Huntington Beach', 'Costa Mesa', 'Garden Grove', 'Mission Viejo', 'Newport Beach']],
+  ['Riverside County', ['Riverside', 'Corona', 'Moreno Valley', 'Murrieta', 'Temecula', 'Perris', 'Palm Springs']],
+  ['San Bernardino County', ['San Bernardino', 'Ontario', 'Rancho Cucamonga', 'Fontana', 'Redlands', 'Rialto', 'Highland', 'Victorville']],
+  ['Ventura County', ['Ventura', 'Oxnard', 'Thousand Oaks', 'Simi Valley', 'Camarillo']],
+  ['Kern County', ['Bakersfield', 'Delano', 'Ridgecrest', 'Tehachapi']]
+];
 const pages = [
   {
     slug: 'skilled-nursing', title: 'Skilled Nursing', description: 'Explore nursing care at home, physician coordination and services offered by Orange Home Health.', service: true,
@@ -107,6 +115,12 @@ const pages = [
       ['HCAOA', 'Home Care Association of America', 'The home care association’s official website.', 'hcaoa.org', 'https://www.hcaoa.org/']
     ].map(([mark, name, description, domain, url]) => `<a class="resource-item" href="${url}" target="_blank" rel="noopener noreferrer"><span class="resource-monogram" aria-hidden="true">${mark}</span><div><h2>${name}</h2><p>${description}</p><small>${domain} · Opens a new tab</small></div>${icon('arrow')}</a>`).join('')}<p class="resource-note">General information does not replace advice from your own healthcare professional. These links do not imply a partnership or endorsement by the linked organizations.</p></div></div></section>
     <section class="inner-section care-start"><div class="site-container" style="display:block"><p class="eyebrow">BEFORE YOU CALL</p><h2>You can start with<br><em>these questions.</em></h2><div class="question-grid"><article><h3>Which services fit my needs?</h3><p>Ask what an assessment involves and which services may be available.</p></article><article><h3>Is my address in your area?</h3><p>Share your location with the team to confirm home-visit availability.</p></article><article><h3>What should I know about payment?</h3><p>Ask about your circumstances, coverage questions and the next steps.</p></article></div></div></section><section class="inner-section"><div class="site-container"><a class="text-link" href="../homepage.html#faq">More common questions ${icon('arrow')}</a></div></section>` + cta('Have a question?<br>Let’s <em>talk it through.</em>')
+  },
+  {
+    slug: 'coverage-area', title: 'Coverage Area', description: 'Explore the Southern California counties and communities served by Orange Home Health.',
+    body: plainHero('COVERAGE AREA', 'Care across<br><em>Southern California.</em>', 'Orange Home Health proudly serves patients throughout Southern California, providing high-quality home health services across multiple counties and communities. Our dedicated team is committed to compassionate, personalized care in the comfort of each patient’s home.') +
+    `<section class="inner-section coverage-section"><div class="site-container"><div class="coverage-heading"><div><p class="eyebrow">COUNTIES WE SERVE</p><h2>Support closer<br>to <em>home.</em></h2></div><p>We serve communities across six Southern California counties. Contact our team to confirm availability for your address and the services you need.</p></div><ul class="coverage-counties" aria-label="Counties we serve">${coverageAreas.map(([county], index) => `<li><span>${String(index + 1).padStart(2, '0')}</span>${county}</li>`).join('')}</ul><div class="coverage-subheading"><p class="eyebrow">MAJOR SERVICE AREAS INCLUDE</p><h2>Communities we’re proud to serve.</h2></div><div class="coverage-grid">${coverageAreas.map(([county, cities]) => `<article class="coverage-card"><h3>${county}</h3><ul>${cities.map(city => `<li>${city}</li>`).join('')}</ul></article>`).join('')}</div></div></section>
+    <section class="inner-section coverage-commitment"><div class="site-container mission-grid"><div><p class="eyebrow">OUR COMMITMENT</p><h2>Professional care.<br><em>Personal support.</em></h2></div><div class="mission-copy"><p>Our interdisciplinary team, including Skilled Nurses, Physical Therapists, Occupational Therapists, Speech-Language Pathologists, Medical Social Workers, and Home Health Aides, is dedicated to helping patients recover safely, manage chronic conditions, and maintain independence at home. We proudly serve diverse communities throughout Southern California and offer multilingual services whenever possible to meet the unique needs of our patients and families.</p><blockquote>“Providing compassionate, professional home healthcare throughout Southern California, one patient at a time.”</blockquote></div></div></section>` + cta('Care in your area?<br>Let’s <em>confirm together.</em>')
   },
   {
     slug: 'careers', title: 'Careers', description: 'Introduce yourself to Orange Home Health and ask about opportunities to join the care team.',

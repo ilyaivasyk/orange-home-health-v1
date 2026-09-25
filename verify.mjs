@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 const root = dirname(fileURLToPath(import.meta.url));
 const serviceSlugs = ['skilled-nursing', 'home-health-aide', 'physical-therapy', 'occupational-therapy', 'speech-therapy', 'medical-social-work'];
 const servicePageFiles = serviceSlugs.map(slug => `${slug}/index.html`);
-const pageFiles = ['index.html', 'homepage.html', ...['about', 'services', ...serviceSlugs, 'resources', 'careers', 'insurance-accepted', 'contact'].map(slug => `${slug}/index.html`)];
+const pageFiles = ['index.html', 'homepage.html', ...['about', 'services', ...serviceSlugs, 'resources', 'careers', 'coverage-area', 'insurance-accepted', 'contact'].map(slug => `${slug}/index.html`)];
 const getIds = html => [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 for (const file of pageFiles) {
   const pagePath = resolve(root, file);
@@ -16,10 +16,10 @@ for (const file of pageFiles) {
   const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0];
   assert.ok(footer, `${file}: missing shared footer`);
   assert.equal((footer.match(/<nav\b/g) || []).length, 1, `${file}: footer must have one navigation column`);
-  assert.equal((footer.match(/<nav\b[\s\S]*?<\/nav>/)[0].match(/<a\b/g) || []).length, 13, `${file}: retain all thirteen footer destinations`);
+  assert.equal((footer.match(/<nav\b[\s\S]*?<\/nav>/)[0].match(/<a\b/g) || []).length, 14, `${file}: retain all fourteen footer destinations`);
   const header = html.match(/<header class="site-header">[\s\S]*?<\/header>/)?.[0];
   assert.ok(header, `${file}: missing shared header`);
-  for (const label of ['Home', 'About us', 'Services', 'Careers', 'Resources', 'Insurance accepted', 'Contact us']) assert.ok(header.includes(label), `${file}: header missing ${label}`);
+  for (const label of ['Home', 'About us', 'Services', 'Careers', 'Resources', 'Coverage area', 'Insurance accepted', 'Contact us']) assert.ok(header.includes(label), `${file}: header missing ${label}`);
   for (const [, ref] of html.matchAll(/(?:src|href|poster)="([^"]+)"/g)) {
     if (/^(https?:|tel:|mailto:)/.test(ref)) continue;
     const [urlPath, fragment] = ref.split('#');
@@ -30,9 +30,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=5"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=5/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=5/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=6"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=6/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=6/, `${file}: versioned shared script is required`);
   assert.match(html, /FAX 818-584-8822/, `${file}: utility fax number missing`);
   assert.match(html, /13735 Victory Blvd, Suite 18, Van Nuys, CA 91401/, `${file}: utility address missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
@@ -56,6 +56,9 @@ assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /data-s
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /class="services-page-hero"/, 'Services heading and video must share one hero section');
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /<video autoplay muted loop playsinline/, 'Services hero video must autoplay silently without visible controls');
 assert.match(html, /HOME HEALTH CARE IN SOUTHERN CALIFORNIA/, 'Homepage service area label must name Southern California');
+const coverageHtml = readFileSync(resolve(root, 'coverage-area/index.html'), 'utf8');
+for (const county of ['Los Angeles County', 'Orange County', 'Riverside County', 'San Bernardino County', 'Ventura County', 'Kern County']) assert.match(coverageHtml, new RegExp(county), `Coverage page missing ${county}`);
+assert.ok(!coverageHtml.includes('image.png'), 'Coverage page must not include the pasted image placeholder');
 const siteJs = readFileSync(resolve(root, 'site.js'), 'utf8');
 const siteCss = readFileSync(resolve(root, 'site.css'), 'utf8');
 const homepageCss = readFileSync(resolve(root, 'homepage.css'), 'utf8');
@@ -69,4 +72,4 @@ for (const key of ['Brand/Orange', 'Brand/Blue', 'Ink/Navy', 'Ink/Body', 'Ink/Mu
 assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSeconds);
 for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt', 'assets/hero-introduction.mp4', 'assets/services-introduction.mp4', 'assets/services-video-poster.png']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
 for (const file of pageFiles) assert.match(readFileSync(resolve(root, file), 'utf8'), /assets\/logo-transparent\.png/, `${file}: transparent PNG logo missing`);
-console.log('PASS: offline-ready 13-page website + home alias; local links, assets, forms, animations, tokens and developer handoff files.');
+console.log('PASS: offline-ready 14-page website + home alias; local links, assets, forms, animations, tokens and developer handoff files.');
