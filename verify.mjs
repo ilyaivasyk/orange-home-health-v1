@@ -30,9 +30,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=6"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=6/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=6/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=7"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=7/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=7/, `${file}: versioned shared script is required`);
   assert.match(html, /FAX 818-584-8822/, `${file}: utility fax number missing`);
   assert.match(html, /13735 Victory Blvd, Suite 18, Van Nuys, CA 91401/, `${file}: utility address missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
@@ -59,6 +59,8 @@ assert.match(html, /HOME HEALTH CARE IN SOUTHERN CALIFORNIA/, 'Homepage service 
 const coverageHtml = readFileSync(resolve(root, 'coverage-area/index.html'), 'utf8');
 for (const county of ['Los Angeles County', 'Orange County', 'Riverside County', 'San Bernardino County', 'Ventura County', 'Kern County']) assert.match(coverageHtml, new RegExp(county), `Coverage page missing ${county}`);
 assert.ok(!coverageHtml.includes('image.png'), 'Coverage page must not include the pasted image placeholder');
+assert.match(coverageHtml, /id="our-commitment"/, 'Coverage page must expose the Our Commitment section');
+assert.match(coverageHtml, /<strong>49<\/strong><span>communities listed/, 'Coverage page community count must stay in sync');
 const siteJs = readFileSync(resolve(root, 'site.js'), 'utf8');
 const siteCss = readFileSync(resolve(root, 'site.css'), 'utf8');
 const homepageCss = readFileSync(resolve(root, 'homepage.css'), 'utf8');
