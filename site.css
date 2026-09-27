@@ -106,7 +106,8 @@
 .social-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; }
 .social-card { display: grid; grid-template-columns: 46px minmax(0,1fr) 20px; gap: 14px; align-items: center; min-height: 116px; padding: 20px; border: 1px solid rgb(255 255 255 / .15); border-radius: 10px; background: rgb(255 255 255 / .06); color: white; text-decoration: none; transition: transform .2s ease, background-color .2s ease, border-color .2s ease; }
 .social-card:hover { transform: translateY(-5px); border-color: rgb(159 212 232 / .7); background: rgb(255 255 255 / .11); }
-.social-mark { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--oh-orange); color: white; font-size: .875rem; font-weight: 800; }
+.social-mark { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: white; }
+.social-mark img { width: 25px; height: 25px; object-fit: contain; }
 .social-card strong,.social-card small { display: block; }
 .social-card strong { font-size: 1rem; }
 .social-card small { margin-top: 5px; color: #C7D9E2; font-size: .6875rem; line-height: 1.4; overflow-wrap: anywhere; }
@@ -114,7 +115,8 @@
 .social-card:hover .social-arrow { transform: translate(3px,-3px); }
 .footer-socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .footer-socials a { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 6px 10px 6px 7px; border: 1px solid var(--oh-line); border-radius: 999px; color: var(--oh-muted); font-size: .6875rem; text-decoration: none; }
-.footer-socials a span { display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: var(--oh-blue-soft); color: var(--oh-blue-ink); font-size: .5625rem; font-weight: 800; }
+.footer-socials a span { display: grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: white; }
+.footer-socials a img { width: 15px; height: 15px; object-fit: contain; }
 .footer-socials a:hover { border-color: var(--oh-blue-mid); color: var(--oh-navy); text-decoration: none; }
 .resources-layout { display: grid; grid-template-columns: 250px 1fr; gap: 72px; align-items: start; }
 .resource-intro { position: sticky; top: 24px; }
