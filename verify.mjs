@@ -15,8 +15,10 @@ for (const file of pageFiles) {
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: exactly one h1`);
   const footer = html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0];
   assert.ok(footer, `${file}: missing shared footer`);
-  assert.equal((footer.match(/<nav\b/g) || []).length, 1, `${file}: footer must have one navigation column`);
-  assert.equal((footer.match(/<nav\b[\s\S]*?<\/nav>/)[0].match(/<a\b/g) || []).length, 14, `${file}: retain all fourteen footer destinations`);
+  const footerNavigation = [...footer.matchAll(/<nav\b[\s\S]*?<\/nav>/g)].map(match => match[0]);
+  assert.equal(footerNavigation.length, 2, `${file}: footer must have two navigation columns`);
+  assert.equal(footerNavigation.reduce((total, nav) => total + (nav.match(/<a\b/g) || []).length, 0), 14, `${file}: retain all fourteen footer destinations`);
+  for (const network of ['Instagram', 'Facebook', 'YouTube', 'Yelp', 'Google']) assert.match(footer, new RegExp(`>${network}<`), `${file}: footer missing ${network}`);
   const header = html.match(/<header class="site-header">[\s\S]*?<\/header>/)?.[0];
   assert.ok(header, `${file}: missing shared header`);
   for (const label of ['Home', 'About us', 'Services', 'Careers', 'Resources', 'Coverage area', 'Insurance accepted', 'Contact us']) assert.ok(header.includes(label), `${file}: header missing ${label}`);
@@ -30,9 +32,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=7"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=7/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=7/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=8"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=8/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=8/, `${file}: versioned shared script is required`);
   assert.match(html, /FAX 818-584-8822/, `${file}: utility fax number missing`);
   assert.match(html, /13735 Victory Blvd, Suite 18, Van Nuys, CA 91401/, `${file}: utility address missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
@@ -56,6 +58,9 @@ assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /data-s
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /class="services-page-hero"/, 'Services heading and video must share one hero section');
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /<video autoplay muted loop playsinline/, 'Services hero video must autoplay silently without visible controls');
 assert.match(html, /HOME HEALTH CARE IN SOUTHERN CALIFORNIA/, 'Homepage service area label must name Southern California');
+const aboutHtml = readFileSync(resolve(root, 'about/index.html'), 'utf8');
+assert.match(aboutHtml, /class="inner-section social-section"/, 'About page social section missing');
+assert.equal((aboutHtml.match(/class="social-card"/g) || []).length, 5, 'About page needs five social links');
 const coverageHtml = readFileSync(resolve(root, 'coverage-area/index.html'), 'utf8');
 for (const county of ['Los Angeles County', 'Orange County', 'Riverside County', 'San Bernardino County', 'Ventura County', 'Kern County']) assert.match(coverageHtml, new RegExp(county), `Coverage page missing ${county}`);
 assert.ok(!coverageHtml.includes('image.png'), 'Coverage page must not include the pasted image placeholder');

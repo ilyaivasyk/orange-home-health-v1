@@ -12,7 +12,7 @@ document.addEventListener('keydown', event => {
 // Lightweight, dependency-free image reveals inspired by the 21st.dev direction.
 // Content stays fully visible when JavaScript is unavailable or motion is reduced.
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const revealTargets = [...document.querySelectorAll('.service-photo, .about-visual, .inner-hero-grid > figure')];
+const revealTargets = [...document.querySelectorAll('.service-photo, .about-visual, .inner-hero-grid > figure, .social-card')];
 if (!reduceMotion.matches && 'IntersectionObserver' in window) {
   revealTargets.forEach((target, index) => {
     target.classList.add('reveal-on-scroll');
