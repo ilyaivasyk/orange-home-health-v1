@@ -33,9 +33,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=9"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=9/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=9/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=10"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=10/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=10/, `${file}: versioned shared script is required`);
   assert.match(html, /FAX 818-584-8822/, `${file}: utility fax number missing`);
   assert.match(html, /13735 Victory Blvd, Suite 18, Van Nuys, CA 91401/, `${file}: utility address missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
@@ -60,6 +60,8 @@ assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /class=
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /<video autoplay muted loop playsinline/, 'Services hero video must autoplay silently without visible controls');
 assert.match(html, /HOME HEALTH CARE IN SOUTHERN CALIFORNIA/, 'Homepage service area label must name Southern California');
 const aboutHtml = readFileSync(resolve(root, 'about/index.html'), 'utf8');
+assert.match(aboutHtml, /class="about-purpose-panel"/, 'About page purpose panel missing');
+assert.equal((aboutHtml.match(/class="value-item"/g) || []).length, 3, 'About page needs three value cards');
 assert.match(aboutHtml, /class="inner-section social-section"/, 'About page social section missing');
 assert.equal((aboutHtml.match(/class="social-card"/g) || []).length, 5, 'About page needs five social links');
 const coverageHtml = readFileSync(resolve(root, 'coverage-area/index.html'), 'utf8');
