@@ -55,6 +55,34 @@ document.querySelectorAll('[data-services-video]').forEach(panel => {
   });
 });
 
+document.querySelectorAll('[data-video-dialog]').forEach(dialog => {
+  const trigger = document.querySelector(`[data-open-video="${dialog.id}"]`);
+  const closeButton = dialog.querySelector('.dialog-close');
+  const video = dialog.querySelector('video');
+  const openDialog = () => {
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else { dialog.setAttribute('open', ''); document.body.classList.add('dialog-fallback-open'); }
+  };
+  const closeDialog = () => {
+    if (typeof dialog.close === 'function') dialog.close();
+    else { dialog.removeAttribute('open'); document.body.classList.remove('dialog-fallback-open'); }
+  };
+  trigger.addEventListener('click', () => {
+    openDialog();
+    video.currentTime = 0;
+    video.play().catch(() => {});
+  });
+  closeButton.addEventListener('click', closeDialog);
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeDialog();
+  });
+  dialog.addEventListener('close', () => video.pause());
+});
+
+if (reduceMotion.matches) document.querySelectorAll('[data-service-video-background]').forEach(video => video.pause());
+
 document.querySelectorAll('[data-review-slider]').forEach(slider => {
   const track = slider.querySelector('.reviews-grid');
   const move = direction => { track.scrollLeft += direction * track.clientWidth * .9; };
