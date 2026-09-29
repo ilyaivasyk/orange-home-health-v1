@@ -1,6 +1,6 @@
-// Approved client media. An empty value retains the still-image fallback.
-const HERO_VIDEO = 'assets/hero-introduction.mp4';
-const INTRO_VIDEO = 'assets/hero-introduction.mp4';
+// Temporary client preview. An empty value retains the still-image fallback.
+const HERO_VIDEO = 'assets/home-hero-preview.mp4';
+const INTRO_VIDEO = 'assets/home-hero-preview.mp4';
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const hero = document.querySelector('.cinema-hero');
 const heroVideo = document.getElementById('hero-video');

@@ -209,7 +209,7 @@ for (const [symbol, id] of [['move', 'physical-therapy'], ['care', 'occupational
   home = home.replace(`href="services/index.html"><svg class="icon" aria-hidden="true"><use href="#i-${symbol}"`, `href="${id}/index.html"><svg class="icon" aria-hidden="true"><use href="#i-${symbol}"`);
 }
 if (!/href="site\.css(?:\?[^"]*)?"/.test(home)) home = home.replace('<script src="homepage.js"', '<link rel="stylesheet" href="site.css">\n  <script src="site.js" defer></script>\n  <script src="homepage.js"');
-home = versionAssets(home);
+home = versionAssets(home).replace('homepage.js?v=14', 'homepage.js?v=15');
 writeFileSync(join(root, 'homepage.html'), home);
 writeFileSync(join(root, 'index.html'), home);
 console.log(`Built ${pages.length} interior pages and synchronized homepage navigation. Website now has ${pages.length + 1} public-page designs.`);

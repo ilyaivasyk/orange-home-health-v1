@@ -53,8 +53,8 @@ const html = readFileSync(resolve(root, 'homepage.html'), 'utf8');
 assert.equal(html, readFileSync(resolve(root, 'index.html'), 'utf8'), 'Home alias must match the website entry point');
 assert.match(html, /<dialog\b[^>]*aria-labelledby="intro-title"/, 'Introduction must have a named native dialog');
 assert.ok(!html.includes('play-circle'), 'Remove the circular play control');
-assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const HERO_VIDEO = 'assets\/hero-introduction\.mp4'/, 'Hero video must be configured');
-assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const INTRO_VIDEO = 'assets\/hero-introduction\.mp4'/, 'Hero watch button must open the supplied video');
+assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const HERO_VIDEO = 'assets\/home-hero-preview\.mp4'/, 'Hero video must use the current preview');
+assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const INTRO_VIDEO = 'assets\/home-hero-preview\.mp4'/, 'Hero watch button must open the current preview');
 assert.match(html, /Watch video/, 'Hero needs a clear video button');
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /<source src="\.\.\/assets\/services-introduction\.mp4" type="video\/mp4">/, 'Services page video missing');
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /data-services-video-play/, 'Services page needs a clear video button');
@@ -90,6 +90,7 @@ const tokens = JSON.parse(readFileSync(resolve(root, 'figma-tokens.json'), 'utf8
 const css = readFileSync(resolve(root, 'tokens.css'), 'utf8');
 for (const key of ['Brand/Orange', 'Brand/Blue', 'Ink/Navy', 'Ink/Body', 'Ink/Muted', 'State/Focus']) assert.ok(css.includes(tokens.color[key]), `${key} differs from the foundation`);
 assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSeconds);
+assert.ok(existsSync(resolve(root, 'assets/home-hero-preview.mp4')), 'Missing home hero preview video');
 for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt', 'assets/hero-introduction.mp4', 'assets/services-introduction.mp4', 'assets/services-video-poster.png']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
 for (const network of ['instagram', 'facebook', 'youtube', 'yelp', 'google']) assert.ok(existsSync(resolve(root, `assets/social-${network}.svg`)), `Missing social icon: ${network}`);
 for (const insurer of ['anthem', 'blue-shield-california', 'united-healthcare', 'seoul-medical-group']) assert.ok(existsSync(resolve(root, `assets/insurance-${insurer}.png`)), `Missing insurance logo: ${insurer}`);
