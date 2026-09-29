@@ -47,7 +47,59 @@
 .plain-hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 90px; }
 .plain-hero h1 { margin-bottom: 0; }
 .plain-hero p:not(.eyebrow) { margin-bottom: 0; max-width: 42ch; font-size: 1.125rem; color: var(--oh-muted); }
+.insurance-hero { position: relative; isolation: isolate; overflow: hidden; padding-block: 72px; background: var(--oh-navy); color: #fff; }
+.insurance-hero::after { content: ''; position: absolute; z-index: -1; top: 50%; right: -70px; width: 310px; aspect-ratio: 1; border: 1px solid rgb(131 203 230 / .2); border-radius: 50%; box-shadow: 0 0 0 42px rgb(131 203 230 / .035),0 0 0 84px rgb(131 203 230 / .025); transform: translateY(-50%); }
+.insurance-hero .plain-hero-grid { align-items: center; }
+.insurance-hero .eyebrow { color: var(--oh-blue); }
+.insurance-hero h1 { color: #fff; }
+.insurance-hero h1 em { color: #F4C39E; }
+.insurance-hero p:not(.eyebrow) { padding-left: 28px; border-left: 1px solid rgb(131 203 230 / .42); color: #D8E5EB; }
 .inner-section { padding-block: 80px; }
+.insurance-network { background: linear-gradient(180deg,#fff 0%,#F7FBFD 100%); }
+.insurance-network-heading { display: grid; grid-template-columns: 1.25fr .75fr; align-items: end; gap: 72px; margin-bottom: 42px; }
+.insurance-network-heading h2 { max-width: 16ch; margin: 0; }
+.insurance-network-heading > p { max-width: 42ch; margin: 0 0 5px; color: var(--oh-muted); font-size: .9375rem; }
+.insurance-logo-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
+.insurance-logo-card { min-height: 180px; display: grid; grid-template-rows: minmax(94px,1fr) auto; align-items: center; margin: 0; padding: 24px 24px 20px; border: 1px solid #D9E5EB; border-radius: 12px; background: #fff; box-shadow: 0 8px 30px rgb(24 53 74 / .045); transition: transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+.insurance-logo-card:hover { transform: translateY(-3px); border-color: #A9D1E1; box-shadow: 0 14px 36px rgb(24 53 74 / .08); }
+.insurance-logo-frame { min-width: 0; height: 94px; display: grid; place-items: center; overflow: hidden; }
+.insurance-logo-image { max-width: 88%; max-height: 74px; width: auto; height: auto; object-fit: contain; }
+.insurance-logo-card h3 { align-self: end; margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--oh-line); color: var(--oh-navy); font-size: .8125rem; font-weight: 650; text-align: center; }
+.credentials-section { background: #F1F8FB; }
+.credentials-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 72px; margin-bottom: 42px; }
+.credentials-heading h2 { margin: 0; }
+.credentials-heading > div:last-child { max-width: 48ch; justify-self: end; }
+.credentials-heading > div:last-child > p { margin: 0 0 16px; color: var(--oh-muted); }
+.credentials-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
+.credential-card { display: grid; grid-template-rows: 116px auto; min-width: 0; padding: 24px; border: 1px solid #D7E5EB; border-radius: 12px; background: #fff; box-shadow: 0 8px 28px rgb(24 53 74 / .045); }
+.credential-logo { display: grid; place-items: center; min-width: 0; overflow: hidden; }
+.credential-logo img { width: auto; height: auto; max-width: 90%; max-height: 94px; object-fit: contain; }
+.credential-card > div:last-child { padding-top: 16px; border-top: 1px solid var(--oh-line); text-align: center; }
+.credential-card h3 { margin: 0 0 5px; color: var(--oh-navy); font-size: .9375rem; }
+.credential-card p { margin: 0; color: var(--oh-muted); font-size: .75rem; line-height: 1.45; }
+.reviews-section { background: var(--oh-warm); }
+.reviews-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 72px; margin-bottom: 42px; }
+.reviews-heading h2 { margin: 0; }
+.reviews-heading > p { max-width: 48ch; justify-self: end; margin: 0; color: var(--oh-muted); }
+.reviews-controls { display: flex; justify-content: flex-end; gap: 10px; margin: -12px 0 18px; }
+.reviews-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #D9CFC6; border-radius: 50%; background: #fff; color: var(--oh-navy); font: inherit; cursor: pointer; }
+.reviews-controls button:hover { border-color: var(--oh-orange); color: var(--oh-orange); }
+.reviews-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 44%; gap: 18px; overflow-x: auto; padding: 2px 2px 12px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.reviews-grid::-webkit-scrollbar { display: none; }
+.review-card { display: grid; grid-template-rows: auto 1fr auto; min-height: 300px; padding: 32px; border: 1px solid #E7DDD4; border-radius: 16px; background: #fff; box-shadow: 0 12px 34px rgb(24 53 74 / .055); }
+.review-card { scroll-snap-align: start; }
+.review-source { display: flex; align-items: center; gap: 10px; }
+.review-source > span:first-child { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--oh-blue-soft); }
+.review-source img { width: 22px; height: 22px; object-fit: contain; }
+.review-source strong { color: var(--oh-navy); font-size: .875rem; }
+.review-rating { margin-left: auto; color: #E29A36; font-size: .75rem; font-weight: 700; letter-spacing: .08em; }
+.review-card blockquote,.review-summary { margin: 36px 0; color: var(--oh-navy); font-family: Georgia,serif; font-size: clamp(1.35rem,2.1vw,1.8rem); line-height: 1.45; }
+.review-summary { font-style: italic; }
+.review-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 18px; border-top: 1px solid var(--oh-line); }
+.review-footer > span { display: grid; gap: 3px; }
+.review-footer strong { color: var(--oh-navy); font-size: .8125rem; }
+.review-footer small { color: var(--oh-muted); font-size: .6875rem; }
+.review-footer a { color: var(--oh-blue-ink); font-size: .75rem; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 .detail-layout { display: grid; grid-template-columns: 240px minmax(0,1fr); gap: 80px; align-items: start; }
 .service-sidebar { position: sticky; top: 24px; padding: 24px; border: 1px solid var(--oh-line); border-radius: 8px; }
 .service-sidebar h2 { font-size: 1rem; font-weight: 700; letter-spacing: 0; margin-bottom: 14px; }
@@ -226,6 +278,8 @@
 .contact-method a { text-decoration: none; color: var(--oh-navy); font-size: 1.0625rem; overflow-wrap: anywhere; }
 .contact-method a:hover { text-decoration: underline; }
 .contact-method p { margin: 4px 0 0; font-size: .875rem; color: var(--oh-muted); }
+.contact-method .contact-fax { display: flex; align-items: center; gap: 7px; }
+.contact-fax .icon { width: 16px; height: 16px; color: var(--oh-blue-ink); }
 .office-card { background: var(--oh-blue-soft); border-radius: 8px; padding: 28px; }
 .office-card h3 { font-size: 1.125rem; }
 .office-card p { font-size: 1rem; margin-bottom: 12px; }
@@ -242,14 +296,14 @@
 @media (max-width: 959px) {
   .inner-hero,.plain-hero,.coverage-hero { margin-inline: 12px; }.inner-hero-grid { gap: 28px; min-height: 420px; }.inner-hero-photo { min-height: 420px; }.inner-hero-copy { padding-block: 36px; }.inner-hero h1,.plain-hero h1 { font-size: 2.5rem; }.coverage-hero-grid { grid-template-columns: 1fr; gap: 40px; }.coverage-reach { max-width: 560px; }.coverage-commitment { margin-inline: 12px; padding-block: 72px; }
   .inner-section { padding-block: 64px; }.detail-layout { grid-template-columns: 1fr; gap: 32px; }.service-sidebar { position: static; padding: 20px 24px; }.service-sidebar nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }.service-sidebar nav a { border: 0; padding: 6px 0; }.service-sidebar .sidebar-call,.service-sidebar > small { display: none; }
-  .plain-hero-grid { grid-template-columns: 1fr 1fr; gap: 36px; }.resources-layout { grid-template-columns: 1fr; gap: 24px; }.resource-intro { position: static; }.resource-intro p { max-width: 58ch; }.coverage-heading { gap: 36px; }.coverage-counties { grid-template-columns: repeat(2,1fr); }.coverage-grid { gap: 18px; }.coverage-commitment-inner { grid-template-columns: 1fr; gap: 30px; }
+  .plain-hero-grid { grid-template-columns: 1fr 1fr; gap: 36px; }.insurance-network-heading,.credentials-heading,.reviews-heading { gap: 36px; }.insurance-logo-grid,.credentials-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.reviews-grid { grid-auto-columns: 76%; }.resources-layout { grid-template-columns: 1fr; gap: 24px; }.resource-intro { position: static; }.resource-intro p { max-width: 58ch; }.coverage-heading { gap: 36px; }.coverage-counties { grid-template-columns: repeat(2,1fr); }.coverage-grid { gap: 18px; }.coverage-commitment-inner { grid-template-columns: 1fr; gap: 30px; }
   .mission-grid,.care-start > div,.form-layout { gap: 36px; }.about-purpose-panel { gap: 36px; padding: 40px; }.site-form { padding: 24px; }.form-layout { grid-template-columns: .85fr 1.15fr; }.form-row { grid-template-columns: 1fr; gap: 0; }.values-heading { gap: 36px; }.values-grid { gap: 16px; }.value-item { padding: 26px; }.value-item h3 { font-size: 1.0625rem; }.social-heading { gap: 36px; }.social-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 @media (max-width: 639px) {
   .site-footer .footer-grid nav > a { min-height: 36px; }
   .mobile-menu nav { max-height: calc(100dvh - 120px); overflow-y: auto; padding: 12px 20px; }.mobile-menu nav a { padding-block: 10px; }
   .breadcrumbs { font-size: .6875rem; min-height: 54px; gap: 8px; }.inner-hero,.plain-hero,.coverage-hero { margin-inline: 8px; border-radius: 8px; }.inner-hero-grid { grid-template-columns: 1fr; gap: 0; }.inner-hero-copy { padding-block: 34px; }.inner-hero h1,.plain-hero h1 { font-size: 2.5rem; }.inner-hero-copy > p:not(.eyebrow) { margin: 20px 0 24px; }.inner-hero-grid > figure { margin-inline: -20px; }.inner-hero-photo { min-height: 0; height: 240px; }.hero-inline-actions { gap: 10px; }.hero-inline-actions .oh-btn { width: 100%; }.coverage-hero-grid { padding-block: 48px; }.coverage-hero h1 { font-size: 3rem; }.coverage-hero-copy > p:not(.eyebrow) { font-size: 1rem; }.coverage-hero-actions .oh-btn { width: 100%; }.coverage-reach { padding: 24px; }.coverage-stats strong { font-size: 2.75rem; }
-  .plain-hero { padding-block: 36px; }.plain-hero-grid { grid-template-columns: 1fr; gap: 22px; }.plain-hero p:not(.eyebrow) { font-size: 1.0625rem; }
+  .plain-hero { padding-block: 36px; }.plain-hero-grid { grid-template-columns: 1fr; gap: 22px; }.plain-hero p:not(.eyebrow) { font-size: 1.0625rem; }.insurance-hero { padding-block: 48px; }.insurance-hero::after { display: none; }.insurance-hero p:not(.eyebrow) { padding: 20px 0 0; border-left: 0; border-top: 1px solid rgb(131 203 230 / .36); }.insurance-network-heading,.insurance-logo-grid,.credentials-heading,.credentials-grid,.reviews-heading { grid-template-columns: 1fr; }.insurance-network-heading,.credentials-heading,.reviews-heading { gap: 20px; margin-bottom: 30px; }.insurance-network-heading h2 { max-width: 18ch; }.credentials-heading > div:last-child,.reviews-heading > p { justify-self: start; }.insurance-logo-card { min-height: 154px; }.credential-card { grid-template-rows: 100px auto; }.reviews-controls { justify-content: flex-start; margin-top: -8px; }.reviews-grid { grid-auto-columns: 90%; }.review-card { min-height: 0; padding: 26px 22px; }.review-card blockquote,.review-summary { margin-block: 28px; }.review-footer { align-items: flex-start; flex-direction: column; gap: 8px; }
   .inner-section { padding-block: 52px; }.detail-layout { gap: 32px; }.service-sidebar { padding: 20px; }.service-sidebar nav { display: grid; gap: 0; }.service-sidebar nav a { padding: 8px 0; }.clinical-list { grid-template-columns: 1fr; gap: 0; }.detail-content .detail-heading { margin-top: 36px; }.soft-callout { padding: 22px; }.related-link strong { font-size: 1.1875rem; }
   .service-catalog { padding-top: 40px; }.catalog-grid { grid-template-columns: 1fr; gap: 18px; }.catalog-card { padding: 26px; }.catalog-card h2 { font-size: 1.375rem; }
   .mission-grid,.care-start > div,.form-layout { grid-template-columns: 1fr; gap: 28px; }.about-purpose-panel { grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; border-radius: 14px; }.purpose-emblem { width: 58px; height: 58px; margin-top: 26px; }.purpose-copy { padding: 26px 22px; }.mission-statement { font-size: 1.5rem !important; }.values-heading,.values-grid { grid-template-columns: 1fr; }.values-heading { gap: 18px; margin-bottom: 30px; }.values-grid { gap: 14px; }.value-item { min-height: 0; padding: 28px 24px; }.value-icon { margin-bottom: 36px; }.value-item h3 { font-size: 1.25rem; }.social-heading,.social-grid { grid-template-columns: 1fr; }.social-heading { gap: 20px; margin-bottom: 30px; }.social-card { min-height: 92px; }

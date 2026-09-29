@@ -54,3 +54,10 @@ document.querySelectorAll('[data-services-video]').forEach(panel => {
     if (!reduceMotion.matches) video.play();
   });
 });
+
+document.querySelectorAll('[data-review-slider]').forEach(slider => {
+  const track = slider.querySelector('.reviews-grid');
+  const move = direction => { track.scrollLeft += direction * track.clientWidth * .9; };
+  slider.querySelector('[data-review-prev]').addEventListener('click', () => move(-1));
+  slider.querySelector('[data-review-next]').addEventListener('click', () => move(1));
+});

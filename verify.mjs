@@ -33,10 +33,12 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=10"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=10/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=10/, `${file}: versioned shared script is required`);
-  assert.match(html, /FAX 818-584-8822/, `${file}: utility fax number missing`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=14"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=14/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=14/, `${file}: versioned shared script is required`);
+  assert.match(html, /href="#i-fax"/, `${file}: fax icon missing`);
+  assert.match(html, /aria-label="Fax: 818-584-8822"/, `${file}: accessible fax number missing`);
+  assert.ok(!html.includes('FAX 818-584-8822'), `${file}: visible FAX text must be replaced by the icon`);
   assert.match(html, /13735 Victory Blvd, Suite 18, Van Nuys, CA 91401/, `${file}: utility address missing`);
   assert.ok(!html.includes('href="https://orangehomehealthinc.com/'), `${file}: internal links must stay in the new design`);
   for (const [, id] of html.matchAll(/<(?:input|textarea)\b[^>]*\bid="([^"]+)"/g)) assert.ok(html.includes(`for="${id}"`), `${file}: missing field label ${id}`);
@@ -64,11 +66,19 @@ assert.match(aboutHtml, /class="about-purpose-panel"/, 'About page purpose panel
 assert.equal((aboutHtml.match(/class="value-item"/g) || []).length, 3, 'About page needs three value cards');
 assert.match(aboutHtml, /class="inner-section social-section"/, 'About page social section missing');
 assert.equal((aboutHtml.match(/class="social-card"/g) || []).length, 5, 'About page needs five social links');
+assert.equal((aboutHtml.match(/class="credential-card"/g) || []).length, 4, 'About page needs four credential cards');
+assert.equal((html.match(/class="credential-card"/g) || []).length, 4, 'Homepage needs four credential cards');
+assert.equal((aboutHtml.match(/class="review-card"/g) || []).length, 13, 'About page needs all written Google and Yelp review cards');
+assert.equal((html.match(/class="review-card"/g) || []).length, 13, 'Homepage needs all written Google and Yelp review cards');
 const coverageHtml = readFileSync(resolve(root, 'coverage-area/index.html'), 'utf8');
 for (const county of ['Los Angeles County', 'Orange County', 'Riverside County', 'San Bernardino County', 'Ventura County', 'Kern County']) assert.match(coverageHtml, new RegExp(county), `Coverage page missing ${county}`);
 assert.ok(!coverageHtml.includes('image.png'), 'Coverage page must not include the pasted image placeholder');
 assert.match(coverageHtml, /id="our-commitment"/, 'Coverage page must expose the Our Commitment section');
 assert.match(coverageHtml, /<strong>49<\/strong><span>communities listed/, 'Coverage page community count must stay in sync');
+const insuranceHtml = readFileSync(resolve(root, 'insurance-accepted/index.html'), 'utf8');
+assert.match(insuranceHtml, /We are in-network with the following <em>insurance providers\.<\/em>/, 'Insurance network heading missing');
+assert.equal((insuranceHtml.match(/class="insurance-logo-card"/g) || []).length, 4, 'Insurance page needs four confirmed provider logos');
+for (const provider of ['Anthem', 'Blue Shield of California', 'UnitedHealthcare', 'Seoul Medical Group']) assert.match(insuranceHtml, new RegExp(`<h3>${provider}<\\/h3>`), `Insurance page missing ${provider}`);
 const siteJs = readFileSync(resolve(root, 'site.js'), 'utf8');
 const siteCss = readFileSync(resolve(root, 'site.css'), 'utf8');
 const homepageCss = readFileSync(resolve(root, 'homepage.css'), 'utf8');
@@ -82,5 +92,7 @@ for (const key of ['Brand/Orange', 'Brand/Blue', 'Ink/Navy', 'Ink/Body', 'Ink/Mu
 assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSeconds);
 for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt', 'assets/hero-introduction.mp4', 'assets/services-introduction.mp4', 'assets/services-video-poster.png']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
 for (const network of ['instagram', 'facebook', 'youtube', 'yelp', 'google']) assert.ok(existsSync(resolve(root, `assets/social-${network}.svg`)), `Missing social icon: ${network}`);
+for (const insurer of ['anthem', 'blue-shield-california', 'united-healthcare', 'seoul-medical-group']) assert.ok(existsSync(resolve(root, `assets/insurance-${insurer}.png`)), `Missing insurance logo: ${insurer}`);
+for (const credential of ['achc', 'medicare', 'cms', 'sba-wosb']) assert.ok(existsSync(resolve(root, `assets/credential-${credential}.png`)), `Missing credential logo: ${credential}`);
 for (const file of pageFiles) assert.match(readFileSync(resolve(root, file), 'utf8'), /assets\/logo-transparent\.png/, `${file}: transparent PNG logo missing`);
 console.log('PASS: offline-ready 14-page website + home alias; local links, assets, forms, animations, tokens and developer handoff files.');
