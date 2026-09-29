@@ -9,8 +9,8 @@ let home = readFileSync(join(root, 'homepage.html'), 'utf8');
 const icons = home.match(/<svg class="icon-library"[\s\S]*?<\/svg>/)[0];
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const versionAssets = html => html
-  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=14"')
-  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=14"');
+  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^"]*)?"/g, 'href="$1?v=17"')
+  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^"]*)?"/g, 'src="$1?v=17"');
 const socialLinks = [
   ['Instagram', 'instagram', '@orangehomehealth', 'https://www.instagram.com/orangehomehealth/reels/'],
   ['Facebook', 'facebook', 'Orange Home Health', 'https://www.facebook.com/profile.php?id=61594562230153'],
@@ -209,7 +209,7 @@ for (const [symbol, id] of [['move', 'physical-therapy'], ['care', 'occupational
   home = home.replace(`href="services/index.html"><svg class="icon" aria-hidden="true"><use href="#i-${symbol}"`, `href="${id}/index.html"><svg class="icon" aria-hidden="true"><use href="#i-${symbol}"`);
 }
 if (!/href="site\.css(?:\?[^"]*)?"/.test(home)) home = home.replace('<script src="homepage.js"', '<link rel="stylesheet" href="site.css">\n  <script src="site.js" defer></script>\n  <script src="homepage.js"');
-home = versionAssets(home).replace('homepage.js?v=14', 'homepage.js?v=15');
+home = versionAssets(home);
 writeFileSync(join(root, 'homepage.html'), home);
 writeFileSync(join(root, 'index.html'), home);
 console.log(`Built ${pages.length} interior pages and synchronized homepage navigation. Website now has ${pages.length + 1} public-page designs.`);

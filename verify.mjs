@@ -33,9 +33,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=14"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=14/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=14/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=17"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=17/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=17/, `${file}: versioned shared script is required`);
   assert.match(html, /href="#i-fax"/, `${file}: fax icon missing`);
   assert.match(html, /aria-label="Fax: 818-584-8822"/, `${file}: accessible fax number missing`);
   assert.ok(!html.includes('FAX 818-584-8822'), `${file}: visible FAX text must be replaced by the icon`);
