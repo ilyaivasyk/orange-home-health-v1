@@ -55,6 +55,8 @@ assert.match(html, /<dialog\b[^>]*aria-labelledby="intro-title"/, 'Introduction 
 assert.ok(!html.includes('play-circle'), 'Remove the circular play control');
 assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const HERO_VIDEO = 'assets\/hero-introduction\.mp4'/, 'Homepage hero must use its original video');
 assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const INTRO_VIDEO = 'assets\/hero-introduction\.mp4'/, 'Hero watch button must open the original video');
+assert.match(readFileSync(resolve(root, 'skilled-nursing/index.html'), 'utf8'), /<source src="\.\.\/assets\/skilled-nursing\.mp4" type="video\/mp4">/, 'Skilled Nursing hero video missing');
+assert.match(readFileSync(resolve(root, 'skilled-nursing/index.html'), 'utf8'), /Watch the Skilled Nursing video\./, 'Skilled Nursing video title missing');
 assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /<source src="\.\.\/assets\/speech-therapy\.mp4" type="video\/mp4">/, 'Speech Therapy hero video missing');
 assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /class="cinema-hero service-cinema-hero"/, 'Speech Therapy needs a full-width video hero');
 assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /data-open-video="service-video-dialog"/, 'Speech Therapy needs a full-video button');
@@ -100,6 +102,7 @@ const css = readFileSync(resolve(root, 'tokens.css'), 'utf8');
 for (const key of ['Brand/Orange', 'Brand/Blue', 'Ink/Navy', 'Ink/Body', 'Ink/Muted', 'State/Focus']) assert.ok(css.includes(tokens.color[key]), `${key} differs from the foundation`);
 assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSeconds);
 assert.ok(existsSync(resolve(root, 'assets/speech-therapy.mp4')), 'Missing Speech Therapy video');
+assert.ok(existsSync(resolve(root, 'assets/skilled-nursing.mp4')), 'Missing Skilled Nursing video');
 for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt', 'assets/hero-introduction.mp4', 'assets/services-introduction.mp4', 'assets/services-video-poster.png']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
 for (const network of ['instagram', 'facebook', 'youtube', 'yelp', 'google']) assert.ok(existsSync(resolve(root, `assets/social-${network}.svg`)), `Missing social icon: ${network}`);
 for (const insurer of ['anthem', 'blue-shield-california', 'united-healthcare', 'seoul-medical-group']) assert.ok(existsSync(resolve(root, `assets/insurance-${insurer}.png`)), `Missing insurance logo: ${insurer}`);
