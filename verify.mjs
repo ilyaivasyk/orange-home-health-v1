@@ -33,9 +33,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=22"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=22/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=22/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=23"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=23/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=23/, `${file}: versioned shared script is required`);
   assert.match(html, /href="#i-fax"/, `${file}: fax icon missing`);
   assert.match(html, /aria-label="Fax: 818-584-8822"/, `${file}: accessible fax number missing`);
   assert.ok(!html.includes('FAX 818-584-8822'), `${file}: visible FAX text must be replaced by the icon`);
@@ -83,6 +83,8 @@ assert.equal((aboutHtml.match(/class="review-card"/g) || []).length, 13, 'About 
 assert.equal((html.match(/class="review-card"/g) || []).length, 13, 'Homepage needs all written Google and Yelp review cards');
 const coverageHtml = readFileSync(resolve(root, 'coverage-area/index.html'), 'utf8');
 for (const county of ['Los Angeles County', 'Orange County', 'Riverside County', 'San Bernardino County', 'Ventura County', 'Kern County']) assert.match(coverageHtml, new RegExp(county), `Coverage page missing ${county}`);
+for (const county of ['San Diego', 'Imperial', 'Santa Barbara']) assert.match(coverageHtml, new RegExp(`${county} County`), `Coverage page missing ${county} County`);
+assert.match(coverageHtml, /<strong>9<\/strong><span>counties served<\/span>/, 'Coverage county count must include the new counties');
 assert.ok(!coverageHtml.includes('image.png'), 'Coverage page must not include the pasted image placeholder');
 assert.match(coverageHtml, /id="our-commitment"/, 'Coverage page must expose the Our Commitment section');
 assert.match(coverageHtml, /<strong>49<\/strong><span>communities listed/, 'Coverage page community count must stay in sync');

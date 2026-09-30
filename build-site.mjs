@@ -9,8 +9,8 @@ let home = readFileSync(join(root, 'homepage.html'), 'utf8');
 const icons = home.match(/<svg class="icon-library"[\s\S]*?<\/svg>/)[0];
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const versionAssets = html => html
-  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^\"]*)?"/g, 'href="$1?v=22"')
-  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^\"]*)?"/g, 'src="$1?v=22"');
+  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^\"]*)?"/g, 'href="$1?v=23"')
+  .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^\"]*)?"/g, 'src="$1?v=23"');
 const socialLinks = [
   ['Instagram', 'instagram', '@orangehomehealth', 'https://www.instagram.com/orangehomehealth/reels/'],
   ['Facebook', 'facebook', 'Orange Home Health', 'https://www.facebook.com/profile.php?id=61594562230153'],
@@ -111,7 +111,10 @@ const coverageAreas = [
   ['Riverside County', ['Riverside', 'Corona', 'Moreno Valley', 'Murrieta', 'Temecula', 'Perris', 'Palm Springs']],
   ['San Bernardino County', ['San Bernardino', 'Ontario', 'Rancho Cucamonga', 'Fontana', 'Redlands', 'Rialto', 'Highland', 'Victorville']],
   ['Ventura County', ['Ventura', 'Oxnard', 'Thousand Oaks', 'Simi Valley', 'Camarillo']],
-  ['Kern County', ['Bakersfield', 'Delano', 'Ridgecrest', 'Tehachapi']]
+  ['Kern County', ['Bakersfield', 'Delano', 'Ridgecrest', 'Tehachapi']],
+  ['San Diego County', []],
+  ['Imperial County', []],
+  ['Santa Barbara County', []]
 ];
 const totalCommunities = coverageAreas.reduce((total, [, cities]) => total + cities.length, 0);
 const pages = [
@@ -166,7 +169,7 @@ const pages = [
   {
     slug: 'coverage-area', title: 'Coverage Area', description: 'Explore the Southern California counties and communities served by Orange Home Health.',
     body: `<section class="coverage-hero"><div class="site-container coverage-hero-grid"><div class="coverage-hero-copy"><p class="eyebrow">COVERAGE AREA</p><h1>Care across<br><em>Southern California.</em></h1><p>Orange Home Health proudly serves patients throughout Southern California, providing high-quality home health services across multiple counties and communities.</p><div class="coverage-hero-actions"><a class="oh-btn" href="#service-areas">Explore service areas ${icon('arrow')}</a><a class="coverage-jump" href="#our-commitment">Our commitment ↓</a></div></div><aside class="coverage-reach" aria-label="Coverage at a glance"><p>CARE, CLOSER TO HOME</p><div class="coverage-stats"><div><strong>${coverageAreas.length}</strong><span>counties served</span></div><div><strong>${totalCommunities}</strong><span>communities listed</span></div></div><small>Contact our team to confirm availability for your address and the services you need.</small></aside></div></section>` +
-    `<section class="inner-section coverage-section" id="service-areas"><div class="site-container"><div class="coverage-heading"><div><p class="eyebrow">COUNTIES WE SERVE</p><h2>Support closer<br>to <em>home.</em></h2></div><p>Our care teams support diverse communities across six Southern California counties. Choose a county below to see the major service areas.</p></div><ul class="coverage-counties" aria-label="Counties we serve">${coverageAreas.map(([county], index) => `<li><a href="#${county.toLowerCase().replaceAll(' ', '-')}"><span>${String(index + 1).padStart(2, '0')}</span>${county}</a></li>`).join('')}</ul><div class="coverage-subheading"><p class="eyebrow">MAJOR SERVICE AREAS INCLUDE</p><h2>Communities we’re proud to serve.</h2></div><div class="coverage-grid">${coverageAreas.map(([county, cities], index) => `<article class="coverage-card" id="${county.toLowerCase().replaceAll(' ', '-')}"><div class="coverage-card-heading"><span>${String(index + 1).padStart(2, '0')}</span><div><p>${cities.length} COMMUNITIES</p><h3>${county}</h3></div></div><ul>${cities.map(city => `<li>${city}</li>`).join('')}</ul></article>`).join('')}</div></div></section>
+    `<section class="inner-section coverage-section" id="service-areas"><div class="site-container"><div class="coverage-heading"><div><p class="eyebrow">COUNTIES WE SERVE</p><h2>Support closer<br>to <em>home.</em></h2></div><p>Our care teams support diverse communities across ${coverageAreas.length} counties. Choose a county below to see the cities already listed or ask our team about your address.</p></div><ul class="coverage-counties" aria-label="Counties we serve">${coverageAreas.map(([county], index) => `<li><a href="#${county.toLowerCase().replaceAll(' ', '-')}"><span>${String(index + 1).padStart(2, '0')}</span>${county}</a></li>`).join('')}</ul><div class="coverage-subheading"><p class="eyebrow">MAJOR SERVICE AREAS INCLUDE</p><h2>Communities we’re proud to serve.</h2></div><div class="coverage-grid">${coverageAreas.map(([county, cities], index) => `<article class="coverage-card" id="${county.toLowerCase().replaceAll(' ', '-')}"><div class="coverage-card-heading"><span>${String(index + 1).padStart(2, '0')}</span><div><p>${cities.length ? `${cities.length} COMMUNITIES` : 'CITY LIST TO FOLLOW'}</p><h3>${county}</h3></div></div>${cities.length ? `<ul>${cities.map(city => `<li>${city}</li>`).join('')}</ul>` : '<p class="coverage-card-pending">Cities will be added soon. <a href="../contact/index.html">Contact our team</a> to confirm service at your address.</p>'}</article>`).join('')}</div></div></section>
     <section class="coverage-commitment" id="our-commitment"><div class="site-container coverage-commitment-inner"><div><p class="eyebrow">OUR COMMITMENT</p><h2>Professional care.<br><em>Personal support.</em></h2></div><div class="coverage-commitment-copy"><p>Our interdisciplinary team, including Skilled Nurses, Physical Therapists, Occupational Therapists, Speech-Language Pathologists, Medical Social Workers, and Home Health Aides, is dedicated to helping patients recover safely, manage chronic conditions, and maintain independence at home. We proudly serve diverse communities throughout Southern California and offer multilingual services whenever possible to meet the unique needs of our patients and families.</p><blockquote>Providing compassionate, professional home healthcare throughout Southern California, one patient at a time.</blockquote></div></div></section>` + cta('Care in your area?<br>Let’s <em>confirm together.</em>')
   },
   {

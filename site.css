@@ -246,6 +246,7 @@
 .coverage-card h3 { margin: 0; font-size: 1.375rem; }
 .coverage-card ul { display: flex; flex-wrap: wrap; gap: 8px; padding: 22px 0 0; margin: 0; border-top: 1px solid var(--oh-line); list-style: none; }
 .coverage-card li { padding: 8px 12px; border-radius: 999px; background: var(--oh-warm); color: var(--oh-muted); font-size: .8125rem; }
+.coverage-card-pending { padding-top: 22px; margin: 0; border-top: 1px solid var(--oh-line); color: var(--oh-muted); }
 .coverage-commitment { position: relative; scroll-margin-top: 24px; overflow: hidden; margin: 20px; padding-block: 90px; border-radius: 10px; background: var(--oh-blue-soft); }
 .coverage-commitment::after { content: '“'; position: absolute; right: 5%; top: -80px; color: rgb(63 145 177 / .1); font-family: Georgia,serif; font-size: 26rem; line-height: 1; }
 .coverage-commitment-inner { position: relative; z-index: 1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; }
