@@ -112,7 +112,7 @@ const coverageAreas = [
   ['San Bernardino County', ['San Bernardino', 'Ontario', 'Rancho Cucamonga', 'Fontana', 'Redlands', 'Rialto', 'Highland', 'Victorville']],
   ['Ventura County', ['Ventura', 'Oxnard', 'Thousand Oaks', 'Simi Valley', 'Camarillo']],
   ['Kern County', ['Bakersfield', 'Delano', 'Ridgecrest', 'Tehachapi']],
-  ['San Diego County', []],
+  ['San Diego County', ['Chula Vista', 'Coronado', 'Del Mar', 'El Cajon', 'Encinitas', 'Escondido', 'Imperial Beach', 'La Mesa', 'Lemon Grove', 'National City', 'Oceanside', 'Poway', 'San Diego (County seat)', 'San Marcos', 'Santee', 'Solana Beach', 'Vista']],
   ['Imperial County', []],
   ['Santa Barbara County', []]
 ];

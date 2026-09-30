@@ -87,7 +87,9 @@ for (const county of ['San Diego', 'Imperial', 'Santa Barbara']) assert.match(co
 assert.match(coverageHtml, /<strong>9<\/strong><span>counties served<\/span>/, 'Coverage county count must include the new counties');
 assert.ok(!coverageHtml.includes('image.png'), 'Coverage page must not include the pasted image placeholder');
 assert.match(coverageHtml, /id="our-commitment"/, 'Coverage page must expose the Our Commitment section');
-assert.match(coverageHtml, /<strong>49<\/strong><span>communities listed/, 'Coverage page community count must stay in sync');
+assert.match(coverageHtml, /<strong>66<\/strong><span>communities listed/, 'Coverage page community count must stay in sync');
+assert.match(coverageHtml, /17 COMMUNITIES<\/p><h3>San Diego County<\/h3>/, 'San Diego County must list all 17 cities');
+assert.match(coverageHtml, /San Diego \(County seat\)/, 'San Diego county seat missing');
 const insuranceHtml = readFileSync(resolve(root, 'insurance-accepted/index.html'), 'utf8');
 assert.match(insuranceHtml, /We are in-network with the following <em>insurance providers\.<\/em>/, 'Insurance network heading missing');
 assert.equal((insuranceHtml.match(/class="insurance-logo-card"/g) || []).length, 4, 'Insurance page needs four confirmed provider logos');
