@@ -106,12 +106,36 @@ const supportServicePage = ({slug, title, label, heading, intro, image, alt, vid
   `<section class="inner-section"><div class="site-container detail-layout">${sidebar(slug)}<div class="detail-content"><p class="eyebrow">INDIVIDUAL SUPPORT AT HOME</p><h2>Start with your needs.<br>Build the plan <em>together.</em></h2><p>${intro}</p><h2 class="detail-heading">A conversation may include</h2>${checklist(points)}<div class="soft-callout"><h3>Assessment comes first.</h3><p>Contact Orange to discuss whether this service is appropriate and available for your individual situation.</p></div></div></div></section>` + enquiryForm(slug, title) + cta()
 });
 const coverageAreas = [
-  ['Los Angeles County', ['Los Angeles', 'Van Nuys', 'Burbank', 'Glendale', 'Pasadena', 'Santa Clarita', 'Lancaster', 'Palmdale', 'Torrance', 'Long Beach', 'Downey', 'Whittier', 'Inglewood', 'Pomona', 'West Covina']],
-  ['Orange County', ['Anaheim', 'Santa Ana', 'Irvine', 'Orange', 'Fullerton', 'Huntington Beach', 'Costa Mesa', 'Garden Grove', 'Mission Viejo', 'Newport Beach']],
-  ['Riverside County', ['Riverside', 'Corona', 'Moreno Valley', 'Murrieta', 'Temecula', 'Perris', 'Palm Springs']],
-  ['San Bernardino County', ['San Bernardino', 'Ontario', 'Rancho Cucamonga', 'Fontana', 'Redlands', 'Rialto', 'Highland', 'Victorville']],
+  ['Los Angeles County', [
+    'Los Angeles', 'Van Nuys', 'Long Beach', 'Glendale', 'Santa Clarita', 'Lancaster', 'Palmdale', 'Pomona', 'Torrance', 'Pasadena',
+    'El Monte', 'Downey', 'Inglewood', 'West Covina', 'Norwalk', 'Burbank', 'Compton', 'Santa Monica', 'Whittier', 'Hawthorne',
+    'Alhambra', 'Lakewood', 'Bellflower', 'Baldwin Park', 'Lynwood', 'Redondo Beach', 'Pico Rivera', 'Montebello', 'Monterey Park', 'Gardena',
+    'Huntington Park', 'Arcadia', 'Cerritos', 'Covina', 'Azusa', 'La Mirada', 'Temple City', 'San Gabriel', 'Rosemead', 'San Dimas',
+    'Diamond Bar', 'Glendora', 'Bell Gardens', 'Manhattan Beach', 'Hermosa Beach', 'Beverly Hills', 'Culver City', 'West Hollywood', 'Malibu', 'Calabasas',
+    'Agoura Hills', 'El Segundo', 'Lawndale', 'Lomita', 'Rancho Palos Verdes', 'Rolling Hills', 'Palos Verdes Estates', 'San Fernando', 'Irwindale', 'Vernon',
+    'South Pasadena', 'Sierra Madre', 'Walnut', 'Duarte'
+  ]],
+  ['Orange County', [
+    'Aliso Viejo', 'Anaheim', 'Brea', 'Buena Park', 'Costa Mesa', 'Cypress', 'Dana Point', 'Fountain Valley', 'Fullerton', 'Garden Grove',
+    'Huntington Beach', 'Irvine', 'La Habra', 'La Palma', 'Laguna Beach', 'Laguna Hills', 'Laguna Niguel', 'Laguna Woods', 'Lake Forest', 'Los Alamitos',
+    'Mission Viejo', 'Newport Beach', 'Orange', 'Placentia', 'Rancho Santa Margarita', 'San Clemente', 'San Juan Capistrano', 'Santa Ana', 'Seal Beach', 'Stanton',
+    'Tustin', 'Villa Park', 'Westminster', 'Yorba Linda'
+  ]],
+  ['Riverside County', [
+    'Banning', 'Beaumont', 'Blythe', 'Calimesa', 'Canyon Lake', 'Cathedral City', 'Coachella', 'Corona', 'Desert Hot Springs', 'Eastvale',
+    'Hemet', 'Indian Wells', 'Indio', 'Jurupa Valley', 'La Quinta', 'Lake Elsinore', 'Menifee', 'Moreno Valley', 'Murrieta', 'Norco',
+    'Palm Desert', 'Palm Springs', 'Perris', 'Rancho Mirage', 'Riverside', 'San Jacinto', 'Temecula'
+  ]],
+  ['San Bernardino County', [
+    'Adelanto', 'Apple Valley', 'Barstow', 'Big Bear Lake', 'Chino', 'Chino Hills', 'Colton', 'Fontana', 'Grand Terrace', 'Hesperia',
+    'Highland', 'Loma Linda', 'Montclair', 'Needles', 'Ontario', 'Rancho Cucamonga', 'Redlands', 'Rialto', 'San Bernardino', 'Twentynine Palms',
+    'Upland', 'Victorville', 'Yucaipa', 'Yucca Valley'
+  ]],
   ['Ventura County', ['Camarillo', 'Fillmore', 'Moorpark', 'Ojai', 'Oxnard', 'Port Hueneme', 'San Buenaventura (Ventura)', 'Santa Paula', 'Simi Valley', 'Thousand Oaks']],
-  ['Kern County', ['Arvin', 'Bakersfield', 'California City', 'Delano', 'Maricopa', 'McFarland', 'Ridgecrest', 'Shafter', 'Taft', 'Tehachapi', 'Wasco']],
+  ['Kern County', [
+    'Arvin', 'Bakersfield', 'California City', 'Delano', 'Maricopa', 'McFarland', 'Ridgecrest', 'Shafter', 'Taft', 'Tehachapi', 'Wasco',
+    'Lamont', 'Oildale', 'Rosamond', 'Mojave', 'Boron', 'Buttonwillow', 'Lost Hills', 'Frazier Park', 'Pine Mountain Club', 'Weldon', 'Lake Isabella', 'Kernville'
+  ]],
   ['San Diego County', ['Chula Vista', 'Coronado', 'Del Mar', 'El Cajon', 'Encinitas', 'Escondido', 'Imperial Beach', 'La Mesa', 'Lemon Grove', 'National City', 'Oceanside', 'Poway', 'San Diego (County seat)', 'San Marcos', 'Santee', 'Solana Beach', 'Vista']],
   ['Imperial County', ['Brawley', 'Calexico', 'Calipatria', 'El Centro', 'Holtville', 'Imperial', 'Westmorland']],
   ['Santa Barbara County', ['Santa Barbara', 'Santa Maria', 'Carpinteria', 'Goleta', 'Lompoc', 'Solvang', 'Buellton', 'Guadalupe', 'Summerland', 'Santa Ynez', 'Los Olivos', 'Orcutt', 'Isla Vista', 'Montecito', 'Vandenberg Village']]

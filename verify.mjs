@@ -87,9 +87,12 @@ for (const county of ['San Diego', 'Imperial', 'Santa Barbara']) assert.match(co
 assert.match(coverageHtml, /<strong>9<\/strong><span>counties served<\/span>/, 'Coverage county count must include the new counties');
 assert.ok(!coverageHtml.includes('image.png'), 'Coverage page must not include the pasted image placeholder');
 assert.match(coverageHtml, /id="our-commitment"/, 'Coverage page must expose the Our Commitment section');
-assert.match(coverageHtml, /<strong>100<\/strong><span>communities listed/, 'Coverage page community count must stay in sync');
+assert.match(coverageHtml, /<strong>221<\/strong><span>communities listed/, 'Coverage page community count must stay in sync');
+for (const [county, count, last] of [['Los Angeles', 64, 'Duarte'], ['Orange', 34, 'Yorba Linda'], ['Riverside', 27, 'Temecula'], ['San Bernardino', 24, 'Yucca Valley'], ['Kern', 23, 'Kernville']]) {
+  assert.match(coverageHtml, new RegExp(`${count} COMMUNITIES<\\/p><h3>${county} County<\\/h3>`), `${county} County community count is wrong`);
+  assert.ok(coverageHtml.includes(`<li>${last}</li>`), `${county} County missing ${last}`);
+}
 assert.match(coverageHtml, /10 COMMUNITIES<\/p><h3>Ventura County<\/h3>/, 'Ventura County must list all 10 cities');
-assert.match(coverageHtml, /11 COMMUNITIES<\/p><h3>Kern County<\/h3>/, 'Kern County must list all 11 cities');
 assert.match(coverageHtml, /San Buenaventura \(Ventura\)/, 'Ventura city name missing');
 assert.match(coverageHtml, /17 COMMUNITIES<\/p><h3>San Diego County<\/h3>/, 'San Diego County must list all 17 cities');
 assert.match(coverageHtml, /7 COMMUNITIES<\/p><h3>Imperial County<\/h3>/, 'Imperial County must list all 7 cities');
