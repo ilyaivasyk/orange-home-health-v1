@@ -110,8 +110,8 @@ const coverageAreas = [
   ['Orange County', ['Anaheim', 'Santa Ana', 'Irvine', 'Orange', 'Fullerton', 'Huntington Beach', 'Costa Mesa', 'Garden Grove', 'Mission Viejo', 'Newport Beach']],
   ['Riverside County', ['Riverside', 'Corona', 'Moreno Valley', 'Murrieta', 'Temecula', 'Perris', 'Palm Springs']],
   ['San Bernardino County', ['San Bernardino', 'Ontario', 'Rancho Cucamonga', 'Fontana', 'Redlands', 'Rialto', 'Highland', 'Victorville']],
-  ['Ventura County', ['Ventura', 'Oxnard', 'Thousand Oaks', 'Simi Valley', 'Camarillo']],
-  ['Kern County', ['Bakersfield', 'Delano', 'Ridgecrest', 'Tehachapi']],
+  ['Ventura County', ['Camarillo', 'Fillmore', 'Moorpark', 'Ojai', 'Oxnard', 'Port Hueneme', 'San Buenaventura (Ventura)', 'Santa Paula', 'Simi Valley', 'Thousand Oaks']],
+  ['Kern County', ['Arvin', 'Bakersfield', 'California City', 'Delano', 'Maricopa', 'McFarland', 'Ridgecrest', 'Shafter', 'Taft', 'Tehachapi', 'Wasco']],
   ['San Diego County', ['Chula Vista', 'Coronado', 'Del Mar', 'El Cajon', 'Encinitas', 'Escondido', 'Imperial Beach', 'La Mesa', 'Lemon Grove', 'National City', 'Oceanside', 'Poway', 'San Diego (County seat)', 'San Marcos', 'Santee', 'Solana Beach', 'Vista']],
   ['Imperial County', ['Brawley', 'Calexico', 'Calipatria', 'El Centro', 'Holtville', 'Imperial', 'Westmorland']],
   ['Santa Barbara County', ['Santa Barbara', 'Santa Maria', 'Carpinteria', 'Goleta', 'Lompoc', 'Solvang', 'Buellton', 'Guadalupe', 'Summerland', 'Santa Ynez', 'Los Olivos', 'Orcutt', 'Isla Vista', 'Montecito', 'Vandenberg Village']]
