@@ -34,7 +34,7 @@ for (const file of pageFiles) {
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
   assert.match(html, /src="(?:\.\.\/)?site.js\?v=23"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=23/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.css\?v=27/, `${file}: versioned local styles are required`);
   assert.match(html, /site\.js\?v=23/, `${file}: versioned shared script is required`);
   assert.match(html, /href="#i-fax"/, `${file}: fax icon missing`);
   assert.match(html, /aria-label="Fax: 818-584-8822"/, `${file}: accessible fax number missing`);
@@ -74,6 +74,10 @@ assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /<video
 assert.match(html, /HOME HEALTH CARE IN SOUTHERN CALIFORNIA/, 'Homepage service area label must name Southern California');
 const aboutHtml = readFileSync(resolve(root, 'about/index.html'), 'utf8');
 assert.match(aboutHtml, /class="about-purpose-panel"/, 'About page purpose panel missing');
+assert.match(aboutHtml, /Our mission is to deliver high-quality, patient-centered care/, 'About page needs the client mission');
+assert.match(aboutHtml, /English, Spanish, Armenian, Russian, and Farsi/, 'About page needs the supplied language information');
+assert.match(aboutHtml, /Compassion delivered at your doorstep/, 'About page needs the client sign-off');
+assert.ok(!aboutHtml.includes('class="language-section'), 'About page must not duplicate the homepage language section');
 assert.equal((aboutHtml.match(/class="value-item"/g) || []).length, 3, 'About page needs three value cards');
 assert.match(aboutHtml, /class="inner-section social-section"/, 'About page social section missing');
 assert.equal((aboutHtml.match(/class="social-card"/g) || []).length, 5, 'About page needs five social links');
