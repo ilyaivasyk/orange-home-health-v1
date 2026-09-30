@@ -114,7 +114,7 @@ const coverageAreas = [
   ['Kern County', ['Bakersfield', 'Delano', 'Ridgecrest', 'Tehachapi']],
   ['San Diego County', ['Chula Vista', 'Coronado', 'Del Mar', 'El Cajon', 'Encinitas', 'Escondido', 'Imperial Beach', 'La Mesa', 'Lemon Grove', 'National City', 'Oceanside', 'Poway', 'San Diego (County seat)', 'San Marcos', 'Santee', 'Solana Beach', 'Vista']],
   ['Imperial County', ['Brawley', 'Calexico', 'Calipatria', 'El Centro', 'Holtville', 'Imperial', 'Westmorland']],
-  ['Santa Barbara County', []]
+  ['Santa Barbara County', ['Santa Barbara', 'Santa Maria', 'Carpinteria', 'Goleta', 'Lompoc', 'Solvang', 'Buellton', 'Guadalupe', 'Summerland', 'Santa Ynez', 'Los Olivos', 'Orcutt', 'Isla Vista', 'Montecito', 'Vandenberg Village']]
 ];
 const totalCommunities = coverageAreas.reduce((total, [, cities]) => total + cities.length, 0);
 const pages = [
