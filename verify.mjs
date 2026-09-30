@@ -33,9 +33,9 @@ for (const file of pageFiles) {
   }
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
-  assert.match(html, /src="(?:\.\.\/)?site.js\?v=21"/, `${file}: shared interaction script missing`);
-  assert.match(html, /(?:site\.css|homepage\.css)\?v=21/, `${file}: versioned local styles are required`);
-  assert.match(html, /site\.js\?v=21/, `${file}: versioned shared script is required`);
+  assert.match(html, /src="(?:\.\.\/)?site.js\?v=22"/, `${file}: shared interaction script missing`);
+  assert.match(html, /(?:site\.css|homepage\.css)\?v=22/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.js\?v=22/, `${file}: versioned shared script is required`);
   assert.match(html, /href="#i-fax"/, `${file}: fax icon missing`);
   assert.match(html, /aria-label="Fax: 818-584-8822"/, `${file}: accessible fax number missing`);
   assert.ok(!html.includes('FAX 818-584-8822'), `${file}: visible FAX text must be replaced by the icon`);
@@ -55,11 +55,15 @@ assert.match(html, /<dialog\b[^>]*aria-labelledby="intro-title"/, 'Introduction 
 assert.ok(!html.includes('play-circle'), 'Remove the circular play control');
 assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const HERO_VIDEO = 'assets\/hero-introduction\.mp4'/, 'Homepage hero must use its original video');
 assert.match(readFileSync(resolve(root, 'homepage.js'), 'utf8'), /const INTRO_VIDEO = 'assets\/hero-introduction\.mp4'/, 'Hero watch button must open the original video');
-assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /<source src="\.\.\/assets\/home-hero-preview\.mp4" type="video\/mp4">/, 'Speech Therapy hero video missing');
+assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /<source src="\.\.\/assets\/speech-therapy\.mp4" type="video\/mp4">/, 'Speech Therapy hero video missing');
 assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /class="cinema-hero service-cinema-hero"/, 'Speech Therapy needs a full-width video hero');
 assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /data-open-video="service-video-dialog"/, 'Speech Therapy needs a full-video button');
 assert.match(readFileSync(resolve(root, 'speech-therapy/index.html'), 'utf8'), /data-video-dialog/, 'Speech Therapy full-video dialog missing');
 assert.match(readFileSync(resolve(root, 'site.js'), 'utf8'), /\[data-video-dialog\]/, 'Service video dialog behavior missing');
+const occupationalHtml = readFileSync(resolve(root, 'occupational-therapy/index.html'), 'utf8');
+assert.match(occupationalHtml, /<source src="\.\.\/assets\/occupational-therapy\.mp4" type="video\/mp4">/, 'Occupational Therapy hero video missing');
+assert.match(occupationalHtml, /Watch the Occupational Therapy video\./, 'Occupational Therapy video title missing');
+assert.ok(!occupationalHtml.includes('Orange Home Health · Speech Therapy'), 'Occupational Therapy must not use the Speech Therapy label');
 assert.match(html, /Watch video/, 'Hero needs a clear video button');
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /<source src="\.\.\/assets\/services-introduction\.mp4" type="video\/mp4">/, 'Services page video missing');
 assert.match(readFileSync(resolve(root, 'services/index.html'), 'utf8'), /data-services-video-play/, 'Services page needs a clear video button');
@@ -95,7 +99,7 @@ const tokens = JSON.parse(readFileSync(resolve(root, 'figma-tokens.json'), 'utf8
 const css = readFileSync(resolve(root, 'tokens.css'), 'utf8');
 for (const key of ['Brand/Orange', 'Brand/Blue', 'Ink/Navy', 'Ink/Body', 'Ink/Muted', 'State/Focus']) assert.ok(css.includes(tokens.color[key]), `${key} differs from the foundation`);
 assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSeconds);
-assert.ok(existsSync(resolve(root, 'assets/home-hero-preview.mp4')), 'Missing home hero preview video');
+assert.ok(existsSync(resolve(root, 'assets/speech-therapy.mp4')), 'Missing Speech Therapy video');
 for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt', 'assets/hero-introduction.mp4', 'assets/services-introduction.mp4', 'assets/services-video-poster.png']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
 for (const network of ['instagram', 'facebook', 'youtube', 'yelp', 'google']) assert.ok(existsSync(resolve(root, `assets/social-${network}.svg`)), `Missing social icon: ${network}`);
 for (const insurer of ['anthem', 'blue-shield-california', 'united-healthcare', 'seoul-medical-group']) assert.ok(existsSync(resolve(root, `assets/insurance-${insurer}.png`)), `Missing insurance logo: ${insurer}`);
