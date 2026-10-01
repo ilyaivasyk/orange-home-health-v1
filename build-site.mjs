@@ -9,11 +9,12 @@ let home = readFileSync(join(root, 'homepage.html'), 'utf8');
 const icons = home.match(/<svg class="icon-library"[\s\S]*?<\/svg>/)[0];
 const icon = name => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 const versionAssets = html => html
-  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^\"]*)?"/g, (match, path) => `href="${path}?v=${path.endsWith('site.css') ? 27 : 23}"`)
+  .replace(/href="((?:\.\.\/)?(?:tokens|components|homepage|site)\.css)(?:\?[^\"]*)?"/g, (match, path) => `href="${path}?v=${path.endsWith('site.css') ? 28 : 23}"`)
   .replace(/src="((?:\.\.\/)?(?:site|homepage)\.js)(?:\?[^\"]*)?"/g, 'src="$1?v=23"');
 const socialLinks = [
   ['Instagram', 'instagram', '@orangehomehealth', 'https://www.instagram.com/orangehomehealth/reels/'],
   ['Facebook', 'facebook', 'Orange Home Health', 'https://www.facebook.com/profile.php?id=61594562230153'],
+  ['LinkedIn', 'linkedin', 'Orange Home Health Inc.', 'https://www.linkedin.com/company/orange-home-health-inc/?viewAsMember=true'],
   ['YouTube', 'youtube', '@OrangeHomeHealthInc', 'https://www.youtube.com/@OrangeHomeHealthInc'],
   ['Yelp', 'yelp', 'Orange Home Health · Van Nuys', 'https://www.yelp.com/biz/orange-home-health-van-nuys?osq=ORANGE+HOME+HEALTH'],
   ['Google', 'google', 'Business profile & reviews', 'https://www.google.com/search?q=Orange+Home+Health+inc&amp;stick=H4sIAAAAAAA_-NgU1I1qLAwSDayNDdLNDJLTDE2sDC1MqgwSUkzMTFNMjaySDE0tzS0WMQq5l-UmJeequCRnwskUhNzSjIUMvOSARE16YFCAAAA&amp;hl=en&amp;mat=Cft6YNcrbNoiElcBzAmVZnVjfcVRddgHFX5LWOWxjY3pbaR4EJjGqn5R8WNxjhpWiHWdhpW_HR-nA_yLeYcNFC1RS7l49oDzmaa8nZudWImVVNipDK_nIyvCbpH2MaoFc0Y&amp;authuser=0&amp;ved=1t:350944']

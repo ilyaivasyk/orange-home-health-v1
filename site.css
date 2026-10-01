@@ -191,7 +191,7 @@
 .social-heading h2 { margin: 0; color: white; }
 .social-heading h2 em { color: #F4C39E; font-family: Georgia,serif; font-weight: 400; }
 .social-heading > p { max-width: 50ch; margin: 0; color: #C7D9E2; font-size: 1.0625rem; line-height: 1.7; }
-.social-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; }
+.social-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
 .social-card { display: grid; grid-template-columns: 46px minmax(0,1fr) 20px; gap: 14px; align-items: center; min-height: 116px; padding: 20px; border: 1px solid rgb(255 255 255 / .15); border-radius: 10px; background: rgb(255 255 255 / .06); color: white; text-decoration: none; transition: transform .2s ease, background-color .2s ease, border-color .2s ease; }
 .social-card:hover { transform: translateY(-5px); border-color: rgb(159 212 232 / .7); background: rgb(255 255 255 / .11); color: white; }
 .social-mark { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: white; }

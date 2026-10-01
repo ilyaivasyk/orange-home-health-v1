@@ -18,8 +18,8 @@ for (const file of pageFiles) {
   const footerNavigation = [...footer.matchAll(/<nav\b[\s\S]*?<\/nav>/g)].map(match => match[0]);
   assert.equal(footerNavigation.length, 2, `${file}: footer must have two navigation columns`);
   assert.equal(footerNavigation.reduce((total, nav) => total + (nav.match(/<a\b/g) || []).length, 0), 14, `${file}: retain all fourteen footer destinations`);
-  for (const network of ['Instagram', 'Facebook', 'YouTube', 'Yelp', 'Google']) assert.match(footer, new RegExp(`>${network}<`), `${file}: footer missing ${network}`);
-  for (const network of ['instagram', 'facebook', 'youtube', 'yelp', 'google']) assert.match(footer, new RegExp(`assets/social-${network}\\.svg`), `${file}: footer missing official ${network} icon`);
+  for (const network of ['Instagram', 'Facebook', 'LinkedIn', 'YouTube', 'Yelp', 'Google']) assert.match(footer, new RegExp(`>${network}<`), `${file}: footer missing ${network}`);
+  for (const network of ['instagram', 'facebook', 'linkedin', 'youtube', 'yelp', 'google']) assert.match(footer, new RegExp(`assets/social-${network}\\.svg`), `${file}: footer missing official ${network} icon`);
   const header = html.match(/<header class="site-header">[\s\S]*?<\/header>/)?.[0];
   assert.ok(header, `${file}: missing shared header`);
   for (const label of ['Home', 'About us', 'Services', 'Careers', 'Resources', 'Coverage area', 'Insurance accepted', 'Contact us']) assert.ok(header.includes(label), `${file}: header missing ${label}`);
@@ -34,7 +34,7 @@ for (const file of pageFiles) {
   for (const [image] of html.matchAll(/<img\b[^>]*>/g)) assert.match(image, /\balt="[^"]*"/, `${file}: image needs alt text`);
   assert.match(html, /name="robots" content="noindex"/, `${file}: noindex required`);
   assert.match(html, /src="(?:\.\.\/)?site.js\?v=23"/, `${file}: shared interaction script missing`);
-  assert.match(html, /site\.css\?v=27/, `${file}: versioned local styles are required`);
+  assert.match(html, /site\.css\?v=28/, `${file}: versioned local styles are required`);
   assert.match(html, /site\.js\?v=23/, `${file}: versioned shared script is required`);
   assert.match(html, /href="#i-fax"/, `${file}: fax icon missing`);
   assert.match(html, /aria-label="Fax: 818-584-8822"/, `${file}: accessible fax number missing`);
@@ -80,7 +80,8 @@ assert.match(aboutHtml, /Compassion delivered at your doorstep/, 'About page nee
 assert.ok(!aboutHtml.includes('class="language-section'), 'About page must not duplicate the homepage language section');
 assert.equal((aboutHtml.match(/class="value-item"/g) || []).length, 3, 'About page needs three value cards');
 assert.match(aboutHtml, /class="inner-section social-section"/, 'About page social section missing');
-assert.equal((aboutHtml.match(/class="social-card"/g) || []).length, 5, 'About page needs five social links');
+assert.equal((aboutHtml.match(/class="social-card"/g) || []).length, 6, 'About page needs six social links');
+assert.match(aboutHtml, /linkedin\.com\/company\/orange-home-health-inc\//, 'About page LinkedIn link missing');
 assert.equal((aboutHtml.match(/class="credential-card"/g) || []).length, 4, 'About page needs four credential cards');
 assert.equal((html.match(/class="credential-card"/g) || []).length, 4, 'Homepage needs four credential cards');
 assert.equal((aboutHtml.match(/class="review-card"/g) || []).length, 13, 'About page needs all written Google and Yelp review cards');
@@ -120,7 +121,7 @@ assert.equal(tokens.motion.IntroSceneSeconds * 3, tokens.motion.IntroTotalSecond
 assert.ok(existsSync(resolve(root, 'assets/speech-therapy.mp4')), 'Missing Speech Therapy video');
 assert.ok(existsSync(resolve(root, 'assets/skilled-nursing.mp4')), 'Missing Skilled Nursing video');
 for (const file of ['START-HERE.txt', 'DEVELOPER-HANDOFF.md', 'FIGMA-HANDOFF.md', 'figma-foundations.svg', 'assets/logo-client-reference.png', 'assets/logo-transparent.png', 'assets/logo-full.svg', 'assets/logo-reconstruction.svg', 'assets/OFL.txt', 'assets/hero-introduction.mp4', 'assets/services-introduction.mp4', 'assets/services-video-poster.png']) assert.ok(existsSync(resolve(root, file)), `Missing handoff file: ${file}`);
-for (const network of ['instagram', 'facebook', 'youtube', 'yelp', 'google']) assert.ok(existsSync(resolve(root, `assets/social-${network}.svg`)), `Missing social icon: ${network}`);
+for (const network of ['instagram', 'facebook', 'linkedin', 'youtube', 'yelp', 'google']) assert.ok(existsSync(resolve(root, `assets/social-${network}.svg`)), `Missing social icon: ${network}`);
 for (const insurer of ['anthem', 'blue-shield-california', 'united-healthcare', 'seoul-medical-group']) assert.ok(existsSync(resolve(root, `assets/insurance-${insurer}.png`)), `Missing insurance logo: ${insurer}`);
 for (const credential of ['achc', 'medicare', 'cms', 'sba-wosb']) assert.ok(existsSync(resolve(root, `assets/credential-${credential}.png`)), `Missing credential logo: ${credential}`);
 for (const file of pageFiles) assert.match(readFileSync(resolve(root, file), 'utf8'), /assets\/logo-transparent\.png/, `${file}: transparent PNG logo missing`);
